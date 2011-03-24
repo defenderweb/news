@@ -1,6 +1,5 @@
 class CreateProductPresskits < ActiveRecord::Migration
   def self.up
-    drop_table :product_presskits
   
     create_table :products do |t|
       t.string :title
