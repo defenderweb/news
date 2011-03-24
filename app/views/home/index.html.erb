@@ -1,0 +1,20 @@
+<h1>Latest PR Articles</h1>
+
+<table>
+<% Post.limit(5).each do |post| %>
+<tr>
+    <td><%= post.date.strftime("%B %d %Y")  %></td>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= join_tags(post) %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= link_to "All PR Articles", posts_path %> 
+
+<%= link_to "PressKits", brand_presskits_path %> 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<img src="<%= @brand_presskit.icon %>" />
+
+  <h1><%= @brand_presskit.name %></h1>
+
+<br />
+
+<h2>Products:</h2>
+<%= render @brand_presskit.products %>
+<br />
+<h2>Add a Product</h2>
+<%= render "products/form" %>
+
+<br />
+
+
+<%= link_to 'Edit', edit_brand_presskit_path(@brand_presskit) %> |
+<%= link_to 'Back', brand_presskits_path %>

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Model:</b>
+  <%= @product.model %>
+</p>
+<p>
+  <b>Title:</b>
+  <%= @product.title %>
+</p>
+
+<br />
+
+
+	<%= link_to 'Delete', [@product.brand_presskit, @product],
+  	:confirm => 'Are you sure?',
+  	:method => :delete %>

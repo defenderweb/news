@@ -1,0 +1,15 @@
+<%= form_for([@brand_presskit, @brand_presskit.products.build]) do |product_form| %>
+  <div class="field">
+    <%= product_form.label :model %><br />
+    <%= product_form.text_field :model %>
+  </div>
+  
+  <div class="field">
+    <%= product_form.label :title %><br />
+    <%= product_form.text_field :title %>
+  </div>
+  
+  <div class="actions">
+    <%= product_form.submit %>
+  </div>
+<% end %>

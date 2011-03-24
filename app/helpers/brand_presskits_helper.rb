@@ -1,0 +1,3 @@
+module BrandPresskitsHelper
+  
+end

@@ -1,0 +1,30 @@
+<h1>All Brand Presskits</h1>
+
+<table>
+  <tr>
+  	<th></th>
+    <th>Name</th>
+	<th>Parent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @brand_presskits.each do |brand_presskit| %>
+  <tr>
+    <td><img src="<%= brand_presskit.icon %>" height="50" width="50" /></td>
+    <td><%= brand_presskit.name %></td>
+    <td><%= brand_presskit.parent %></td>
+
+    <td><%= link_to 'Show', brand_presskit %></td>
+    <td><%= link_to 'Edit', edit_brand_presskit_path(brand_presskit) %></td>
+    <td><%= link_to 'Destroy', brand_presskit, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+<%= link_to 'New Brand Presskit', new_brand_presskit_path %>
+<%= link_to 'PR Home', '/' %>

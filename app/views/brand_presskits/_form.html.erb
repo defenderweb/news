@@ -1,0 +1,33 @@
+
+<%= form_for(@brand_presskit) do |brand_presskit_form| %>
+  <% if @brand_presskit.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@brand_presskit.errors.count, "error") %> prohibited this presskit from being saved:</h2>
+    <ul>
+    <% @brand_presskit.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+
+  <div class="field">
+    <%= brand_presskit_form.label :name %><br />
+    <%= brand_presskit_form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= brand_presskit_form.label :parent %><br />
+    <%= select(:brand_presskit, :parent, BrandPresskit.all.collect {|p| [ p.name, p.name ] }, {:include_blank => 'None'}) %>
+  </div>
+  
+  <div class="field">
+    <%= brand_presskit_form.label :icon %><br />
+    <%= brand_presskit_form.text_field :icon %>
+  </div>
+  
+  <div class="actions">
+    <%= brand_presskit_form.submit %>
+  </div>
+<% end %>
