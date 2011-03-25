@@ -1,0 +1,11 @@
+<%= form_for([@brand_presskit, @brand_presskit.categories.build]) do |category_form| %>
+
+  <div class="field">
+    <%= category_form.label :name %><br />
+    <%= category_form.text_field :name %>
+  </div>
+  
+  <div class="actions">
+    <%= category_form.submit %>
+  </div>
+<% end %>

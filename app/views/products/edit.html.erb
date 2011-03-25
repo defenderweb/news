@@ -1,6 +1,6 @@
 <h1>Editing Product</h1>
 
-<%= render 'form' %>
+<%= render 'edit_form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Show', brand_presskit_product_path(@brand_presskit, @product) %> |
+<%= link_to 'Back', brand_presskit_path(@brand_presskit) %>

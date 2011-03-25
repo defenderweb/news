@@ -8,9 +8,14 @@
   <b>Title:</b>
   <%= product.title %>
 </p>
+<p>
+  <b>Category:</b>
+  <%= product.category_id %>
+</p>
 
 <p>
 	<%= link_to 'Show', [product.brand_presskit, product] %> | 
+	<%= link_to 'Edit', edit_brand_presskit_product_path(@brand_presskit, product) %> | 
 	<%= link_to 'Delete', [product.brand_presskit, product],
   	:confirm => 'Are you sure?',
   	:method => :delete %>

@@ -9,9 +9,14 @@
   <%= @product.title %>
 </p>
 
+<p>
+  <b>Category:</b>
+  <%= @product.category_id %>
+</p>
+
 <br />
 
-
+	<%= link_to 'Back', brand_presskit_path(@brand_presskit) %> | 
 	<%= link_to 'Delete', [@product.brand_presskit, @product],
   	:confirm => 'Are you sure?',
   	:method => :delete %>

@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.xml
   def show
+    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
     @product = Product.find(params[:id]) 
 
     respond_to do |format|
@@ -41,7 +42,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }
+        format.html { redirect_to(brand_presskit_product_path(@brand_presskit, @product), :notice => 'Product was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

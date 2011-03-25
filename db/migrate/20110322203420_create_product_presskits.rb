@@ -13,6 +13,6 @@ class CreateProductPresskits < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :product_presskit
+    drop_table :products
   end
 end

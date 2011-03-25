@@ -1,12 +1,14 @@
 News::Application.routes.draw do
   
 
+  
+
   resources :posts do
     resources :comments
   end
   
   resources :brand_presskits do
-    resources :products
+    resources :categories, :products
   end
   
   match "/test" => "test#index"

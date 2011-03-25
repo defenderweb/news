@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
   
   # has_many :posts
   belongs_to :brand_presskit
+  belongs_to :category
 end
