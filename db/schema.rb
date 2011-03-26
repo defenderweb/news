@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325144205) do
+ActiveRecord::Schema.define(:version => 20110326012846) do
 
   create_table "brand_presskits", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110325144205) do
     t.datetime "updated_at"
     t.string   "parent",     :default => "CWD"
     t.string   "icon",       :default => "http://cwdlimited.com/images/news/brands/icons/cwd-icon.png"
+    t.string   "url"
   end
 
   create_table "categories", :force => true do |t|
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110325144205) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date",       :default => '2011-03-17'
+    t.date     "date",       :default => '2011-03-26'
   end
 
   create_table "products", :force => true do |t|
