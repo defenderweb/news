@@ -5,17 +5,18 @@
   <h1><%= @brand_presskit.name %></h1>
 
 <br />
-
-<%= render @brand_presskit.categories %>
+<% if @brand_presskit.categories.exists? %>
+	<%= render @brand_presskit.categories %>
+<% else %>	
+	<h2>Products</h2>
+	<%= render @brand_presskit.products %>
+<% end %>
 <br />
 <h2>Add a Category</h2>
 <%= render "categories/form" %>
 
 <br />
 
-<h2>Products:</h2>
-<%= render @brand_presskit.products %>
-<br />
 <h2>Add a Product</h2>
 <%= render "products/form" %>
 
