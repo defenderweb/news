@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.xml
   def show
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
+    @brand = Brand.find(params[:brand_id])
     @product = Product.find(params[:id]) 
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -18,8 +18,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @product = @brand_presskit.products.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @product = @brand.products.find(params[:id])
     
   end
 
@@ -27,22 +27,22 @@ class ProductsController < ApplicationController
   # POST /products.xml
   
   def create
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @product = @brand_presskit.products.create(params[:product])
+    @brand = Brand.find(params[:brand_id])
+    @product = @brand.products.create(params[:product])
     
 
-    redirect_to brand_presskit_path(@brand_presskit)
+    redirect_to brand_path(@brand)
   end
 
   # PUT /products/1
   # PUT /products/1.xml
   def update
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @product = @brand_presskit.products.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @product = @brand.products.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to(brand_presskit_product_path(@brand_presskit, @product), :notice => 'Product was successfully updated.') }
+        format.html { redirect_to(brand_product_path(@brand, @product), :notice => 'Product was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -54,10 +54,10 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.xml
   def destroy
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @product = @brand_presskit.products.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @product = @brand.products.find(params[:id])
     @product.destroy
 
-    redirect_to brand_presskit_path(@brand_presskit)
+    redirect_to brand_path(@brand)
   end
 end

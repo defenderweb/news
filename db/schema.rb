@@ -10,9 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110326012846) do
+ActiveRecord::Schema.define(:version => 20110326014542) do
 
-  create_table "brand_presskits", :force => true do |t|
+  create_table "brands", :force => true do |t|
     t.string   "name"
     t.integer  "post_id"
     t.datetime "created_at"
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(:version => 20110326012846) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.integer  "brand_presskit_id"
+    t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categories", ["brand_presskit_id"], :name => "index_categories_on_brand_presskit_id"
+  add_index "categories", ["brand_id"], :name => "index_categories_on_brand_presskit_id"
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(:version => 20110326012846) do
   create_table "products", :force => true do |t|
     t.string   "title"
     t.string   "model"
-    t.integer  "brand_presskit_id"
+    t.integer  "brand_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
   end
 
-  add_index "products", ["brand_presskit_id"], :name => "index_products_on_brand_presskit_id"
+  add_index "products", ["brand_id"], :name => "index_products_on_brand_presskit_id"
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
 
   create_table "tags", :force => true do |t|

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<img src="<%= @brand.icon %>" />
+
+  <h1><%= @brand.name %></h1>
+
+<br />
+
+<%= render @brand.categories %>
+
+<h2>Products</h2>
+<%= render @brand.products.without_categories %>
+
+<br />
+<h2>Add a Category</h2>
+<%= render "categories/form" %>
+
+<br />
+
+<h2>Add a Product</h2>
+<%= render "products/form" %>
+
+<br />
+
+
+<%= link_to 'Edit', edit_brand_path(@brand) %> |
+<%= link_to 'Back', brands_path %>

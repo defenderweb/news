@@ -7,7 +7,7 @@ News::Application.routes.draw do
     resources :comments
   end
   
-  resources :brand_presskits do
+  resources :brands do
     resources :categories, :products
   end
   

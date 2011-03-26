@@ -2,8 +2,8 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @categories = @brand_presskit.categories.all
+    @brand = Brand.find(params[:brand_id])
+    @categories = @brand.categories.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,26 +35,26 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @category = @brand_presskit.categories.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @category = @brand.categories.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.xml
   def create
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @category = @brand_presskit.categories.create(params[:category])
+    @brand = Brand.find(params[:brand_id])
+    @category = @brand.categories.create(params[:category])
     
 
-    redirect_to brand_presskit_path(@brand_presskit)
+    redirect_to brand_path(@brand)
     
   end
 
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @category = @brand_presskit.categories.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @category = @brand.categories.find(params[:id])
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
@@ -70,10 +70,10 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @brand_presskit = BrandPresskit.find(params[:brand_presskit_id])
-    @category = @brand_presskit.categories.find(params[:id])
+    @brand = Brand.find(params[:brand_id])
+    @category = @brand.categories.find(params[:id])
     @category.destroy
 
-    redirect_to brand_presskit_path(@brand_presskit)
+    redirect_to brand_path(@brand)
   end
 end

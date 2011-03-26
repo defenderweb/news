@@ -16,7 +16,7 @@
 
 <br />
 
-	<%= link_to 'Back', brand_presskit_path(@brand_presskit) %> | 
-	<%= link_to 'Delete', [@product.brand_presskit, @product],
+	<%= link_to 'Back', brand_path(@brand) %> | 
+	<%= link_to 'Delete', [@product.brand, @product],
   	:confirm => 'Are you sure?',
   	:method => :delete %>

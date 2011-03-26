@@ -1,4 +1,4 @@
-<%= form_for([@brand_presskit, @brand_presskit.products.build]) do |product_form| %>
+<%= form_for([@brand, @product]) do |product_form| %>
   
   
   <div class="field">
@@ -13,7 +13,7 @@
   
   <div class="field">
     <%= product_form.label :category_id %><br />
-    <%= select(:product, :category_id, @brand_presskit.categories.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+    <%= select(:product, :category_id, @brand.categories.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
   </div>
   
   <br />

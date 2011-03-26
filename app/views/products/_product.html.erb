@@ -11,9 +11,9 @@
 
 
 <p>
-	<%= link_to 'Show', [product.brand_presskit, product] %> | 
-	<%= link_to 'Edit', edit_brand_presskit_product_path(@brand_presskit, product) %> | 
-	<%= link_to 'Delete', [product.brand_presskit, product],
+	<%= link_to 'Show', [product.brand, product] %> | 
+	<%= link_to 'Edit', edit_brand_product_path(@brand, product) %> | 
+	<%= link_to 'Delete', [product.brand, product],
   	:confirm => 'Are you sure?',
   	:method => :delete %>
 </p>
