@@ -1,5 +1,6 @@
 class TestController < ApplicationController
 
-def hello
-end
+  def index
+    render :text => "Hello #{params[:foo] || "World"}"
+  end
 end
