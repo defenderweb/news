@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110326014542) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "date",       :default => '2011-03-26'
+    t.date     "date",       :default => '2011-03-28'
   end
 
   create_table "products", :force => true do |t|
