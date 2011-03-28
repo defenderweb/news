@@ -2,22 +2,13 @@
 <html>
 <head>
   <title><%= title %></title>
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->    
-  <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-    <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+  <%= render 'layouts/stylesheets' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 	<div id="container">
-      <div id="nav">
-		<a href="http://cwdlimited.com/"><img class="fl" src="http://cwdlimited.com/images/logo.jpg" alt="CWD | Innovators of Consumer Electronics" /></a>
-		
-	  </div>
+      <%= render 'layouts/header' %>
       <div class="shadow">
       	<div id="banner" class="short">
           <img id="bannerImage" class="fl" src="http://cwdlimited.com/images/brands/banner.jpg" />

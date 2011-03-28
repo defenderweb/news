@@ -31,9 +31,9 @@ h1, h2, h3, h4, h5, h6, .button {font-family: "Myriad Pro", Myriad, Arial, Helve
 	 overflow: visible;
 }
 
-#banner {position: relative; width: 960px; height: 441px; background: #000; overflow: hidden; z-index: 1;}
+#banner {position: relative; width: 960px; height: 441px; background: #000; overflow: hidden; z-index: 1; display: block}
 #banner.short {height: 123px;}
-#banner.short h1 {position: absolute; right: 10px; bottom: 20px; color: #fff; font-size: 60px; line-height: 45px; letter-spacing: -2px;}
+#banner.short h1 {position: absolute; right: 20px; bottom: 0px; color: #fff; font-size: 60px; line-height: 45px; letter-spacing: -2px;}
 #content {background: #fff; display: block; position: relative; width: 920px; overflow: visible; padding: 20px}
 
 /* navigation */
