@@ -12,7 +12,7 @@
 	<% @brands.each do |brand| %>
 	  <tr>
 	    <td><img src="<%= brand.icon %>" height="50" width="50" /></td>
-	    <td><%= brand.name %></td>
+	    <td><h3><%= brand.name %></h3></td>
 	    <td><%= brand.parent %></td>
 	
 	    <td><%= link_to 'Show', brand %></td>

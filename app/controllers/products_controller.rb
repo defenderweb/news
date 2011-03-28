@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def show
     @brand = Brand.find(params[:brand_id])
     @product = Product.find(params[:id]) 
+    @title = "Presskits | #{@brand.name} | #{@product.title} "
     
     respond_to do |format|
       format.html # show.html.erb

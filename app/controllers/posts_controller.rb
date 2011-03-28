@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
+    @title = "All Press Releases"
     @posts = Post.all :order => "date DESC"
 
     respond_to do |format|
@@ -16,7 +17,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id]) 
+    @post = Post.find(params[:id])
+    @title = "Press Release | #{@post.title}" 
 
     respond_to do |format|
       format.html # show.html.erb
