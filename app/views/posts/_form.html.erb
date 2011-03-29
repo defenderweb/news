@@ -32,6 +32,12 @@
     <%= post_form.text_area :content %>
   </div>
   <h2>Tags</h2>
+  
+  <div class="field">
+    <%= post_form.label :brand_id %><br />
+    <%= select(:post, :brand_id, Brand.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  
   <%= render :partial => 'tags/form',
              :locals => {:form => post_form} %>
   <div class="actions">

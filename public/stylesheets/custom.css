@@ -17,8 +17,14 @@ body {
 .fl {float: left}
 .fr {float: right}
 
-h1, h2, h3, h4, h5, h6, .button {font-family: "Myriad Pro", Myriad, Arial, Helvetica, sans-serif; font-weight: bold}
+h1, h2, h3, h4, h5, h6, .button, #contact_information strong {font-family: "Myriad Pro", Myriad, Arial, Helvetica, sans-serif; font-weight: bold}
 
+h2 {
+	padding-top: 10px;
+	font-size: 24px;
+	line-height: 35px;
+	border-bottom: 1px solid #ccc;
+}
 #container {
 	width:960px;	
 	padding:0px;
@@ -55,8 +61,8 @@ ul#menu li a:hover {color: #e31838;}
 #menu a .arrow {display: inline-block; position: relative; width: 13px; height: 19px; top: 4px; left: 2px; overflow: hidden;}
 #menu a:hover .arrow img, #menu a.hover .arrow img{position: relative; top: -19px;}
 
-#side_nav {
-	width: 200px;
+#side_nav, #contact_information {
+	width: 180px;
 	padding: 0px 20px;
 	background: #e9e6e6;
 
@@ -95,5 +101,41 @@ ul#menu li a:hover {color: #e31838;}
 	text-decoration: none;
 }
 
+#contact_information {
+	margin-left: 10px;
+	line-height: 24px;
+	
+}
+#contact_information h6 {
+	padding-top: 10px;
+	font-size: 24px;
+	line-height: 35px;
+	border-bottom: 1px solid #ccc;
+}
 
+#contact_information strong {
+	font-size: 18px;
+	font-weight: normal;
+}
+
+#contact_information p {
+	padding: 10px 0px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+#latest_posts {
+	line-height: 1.5em;
+}
+#latest_posts td {
+	padding: 0 10px;
+}
+#latest_posts i {
+	display: block;
+	color: #666;
+	font-style: normal;
+}
+#latest_posts strong {
+	
+}
 

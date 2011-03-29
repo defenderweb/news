@@ -1,11 +1,11 @@
-<h1>All Press Releases</h1>
+<h2>All Press Releases</h2>
 
 <table>
   <tr>
+    <th></th>
     <th>Date</th>
     <th>Title</th>
     <th>Content</th>
-    <th>Tags</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +13,10 @@
 
 <% @posts.each do |post| %>
   <tr>
+  	<td><img src="http://cwdlimited.com/images/news/brands/icons/cwd-icon.png" height="75" width="75" /></td>
     <td><%= post.date.strftime("%B %d %Y") %></td>
     <td><%= post.title %></td>
     <td><%= post.content.truncate(150) %></td>
-    <td><%= join_tags(post) %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -28,4 +28,3 @@
 
 
 <%= link_to 'New Post', new_post_path %>
-<%= link_to 'PR Home', '/' %>

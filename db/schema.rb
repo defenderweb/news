@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110326014542) do
+ActiveRecord::Schema.define(:version => 20110329201309) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -46,7 +46,10 @@ ActiveRecord::Schema.define(:version => 20110326014542) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date",       :default => '2011-03-28'
+    t.integer  "brand_id"
   end
+
+  add_index "posts", ["brand_id"], :name => "index_posts_on_brand_id"
 
   create_table "products", :force => true do |t|
     t.string   "title"
@@ -57,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110326014542) do
     t.integer  "category_id"
   end
 
+  add_index "products", ["brand_id"], :name => "index_products_on_brand_id"
   add_index "products", ["brand_id"], :name => "index_products_on_brand_presskit_id"
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
 
@@ -66,5 +70,14 @@ ActiveRecord::Schema.define(:version => 20110326014542) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

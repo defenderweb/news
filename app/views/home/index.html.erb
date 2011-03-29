@@ -1,20 +1,42 @@
-<h1>Latest PR Articles</h1>
-
-<table>
-<% Post.limit(5).each do |post| %>
-<tr>
-    <td><%= post.date.strftime("%B %d %Y")  %></td>
-    <td><%= post.title %></td>
-    <td><%= post.content %></td>
-    <td><%= join_tags(post) %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
 
-<%= link_to "All Press Releases", posts_path %> 
+<div class="span-11" id="latest_posts">
+	<h2>Latest Press Releases</h2>
+	<table>
+	<% Post.latest_posts.each do |post| %>
+		<tr>
+		<td><img src="http://cwdlimited.com/images/news/brands/icons/cwd-icon.png" height="75" width="75" /></td>
+		<td>	
+			<i><%= post.date.strftime("%B %d %Y")  %></i>
+			<strong><%= link_to post.title.truncate(150), post %></strong>
+			<%= link_to 'Edit', edit_post_path(post) %>
+	    	<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+	<% end %>
+	</table>
+	<%= link_to "All Press Releases", posts_path %> 
+</div>	
+	
+<div class="span-6 last" id="contact_information">
+	<h6>Contact Info</h6>
+	<p>
+		For press inquiries, contact:<br />
+		<% User.marketing_user.each do |marketing| %>
+			<strong><%= marketing.name %></strong>
+			<a href="mailto:<%= marketing.email %>"><%= marketing.email %></a>
+		<% end %>
+	</p>
+	
+	<p>
+		<strong>CWD Headquarters</strong><br />
+		4080 Montrose Road<br />
+		Niagara Falls, ON<br />
+		Canada, L2H 1J9
+	</p>
+	
+	
+</div>
 
-<%= link_to "PressKits", brands_path %> 
+
+
+

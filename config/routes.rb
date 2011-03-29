@@ -1,7 +1,9 @@
 News::Application.routes.draw do
   
 
-  
+  resources :users
+
+  match '/signup',  :to => 'users#new'
 
   resources :posts do
     resources :comments
@@ -10,6 +12,9 @@ News::Application.routes.draw do
   resources :brands do
     resources :categories, :products
   end
+  
+  #ask Nick how to actually rename routes like /brands/1/products/3 to /presskits/defender/SN502-4CH-002/
+  match '/presskits',  :to => 'brands#index'
   
   match "/test(/:foo(/:bar))" => "test#index"
   
