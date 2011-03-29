@@ -1,0 +1,17 @@
+<div id="side_nav">
+	<ul>
+		<li><h5>Media Resources</h5></li>
+		<li><%= link_to 'News & PR Home', '/' %><img src="http://cwdlimited.com/images/news/brands/icons/cwd-black-icon.png" height="33" width="33" class="fr" /></li>
+		<li><%= link_to "PressKits", brands_path %><img src="http://cwdlimited.com/images/news/brands/icons/cwd-black-icon.png" height="33" width="33" class="fr" /></li>
+		<li><%= link_to "All Press Releases", posts_path %><img src="http://cwdlimited.com/images/news/brands/icons/cwd-black-icon.png" height="33" width="33" class="fr" /></li> 
+	</ul>
+	<ul>
+	<li><h5>Media by Brand</h5></li>	
+	<% Brand.all.each do |brand| %>
+		<li>
+		<%= link_to brand.name, brand %>
+		<img src="<%= brand.icon %>" height="33" width="33" class="fr" />
+		</li>
+	<% end %>
+	</ul>
+</div>

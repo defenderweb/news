@@ -16,11 +16,14 @@
         </div>
         <div class="clear"></div>
         <div id="content">
+        	<div class="span-6">
+        		<%= render 'layouts/side_nav' %>
+			</div>
 			
-			
-			<%= yield %>
-			
-			
+			<div class="span-16 push-1 last">			
+				<%= yield %>
+			</div>
+			<div class="clear"></div>
 		</div>
 	  </div>
 	</div>

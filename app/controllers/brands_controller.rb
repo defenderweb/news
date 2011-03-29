@@ -6,21 +6,20 @@ class BrandsController < ApplicationController
   def index
     @title = "Presskits"
     @brands = Brand.all :order => "parent"
-
+    @divisions = Brand.divisions
+    @main_division = Brand.main_division
   end
 
   # GET /brands/1
   def show
     @brand = Brand.find(params[:id]) 
     @product = @brand.products.new
-    @title = "Presskits | #{@brand.name}"
-    
+    @title = "Presskits | #{@brand.name}"    
   end
 
   # GET /brands/new
   def new
     @brand = Brand.new
-
   end
 
   # GET /brands/1/edit
