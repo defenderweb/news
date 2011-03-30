@@ -9,10 +9,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id]) 
     @title = "Presskits | #{@brand.name} | #{@product.title} "
     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @product }
-    end
   end
 
   
@@ -41,15 +37,12 @@ class ProductsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @product = @brand.products.find(params[:id])
 
-    respond_to do |format|
+
       if @product.update_attributes(params[:product])
-        format.html { redirect_to(brand_product_path(@brand, @product), :notice => 'Product was successfully updated.') }
-        format.xml  { head :ok }
+        redirect_to(brand_product_path(@brand, @product), :notice => 'Product was successfully updated.')
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
+        render :action => "edit"
       end
-    end
   end
 
   # DELETE /products/1
