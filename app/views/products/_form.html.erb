@@ -2,17 +2,17 @@
   
   
   <div class="field">
-    <%= product_form.label :model %><br />
+    <%= product_form.label :model %>
     <%= product_form.text_field :model %>
   </div>
   
   <div class="field">
-    <%= product_form.label :title %><br />
+    <%= product_form.label :title %>
     <%= product_form.text_field :title %>
   </div>
   
   <div class="field">
-    <%= product_form.label :category_id %><br />
+    <%= product_form.label :category_id %>
     <%= select(:product, :category_id, @brand.categories.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
   </div>
   

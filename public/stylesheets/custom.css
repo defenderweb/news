@@ -25,6 +25,14 @@ h2 {
 	line-height: 35px;
 	border-bottom: 1px solid #ccc;
 }
+
+em {
+	color: #666;
+	font-style: normal;
+	text-transform: uppercase;
+	font-size: .9em;
+}
+
 #container {
 	width:960px;	
 	padding:0px;
@@ -130,11 +138,7 @@ ul#menu li a:hover {color: #e31838;}
 #latest_posts td {
 	padding: 0 10px;
 }
-#latest_posts i {
-	display: block;
-	color: #666;
-	font-style: normal;
-}
+
 #latest_posts strong {
 	
 }
@@ -143,6 +147,32 @@ input {
 	padding: 3px 5px;
 }
 
+/* MESSAGES */
+#notice {
+	font-style: italic;
+	color: #999;
+}
+
+#errorExplanation {
+	background: #ffe7ec;
+	border: 2px solid #ef0031;
+	padding: 5px 20px;
+	margin-bottom: 10px;
+}
+
+#errorExplanation h2 {
+	border: none;
+}
+.field_with_errors label{
+	color: #ef0031;
+}
+
+.field label {
+	display: block;
+}
+.actions {
+	margin: 10px 0px;
+}
 
 
 #footer {padding-bottom: 20px; font-size: 10px; line-height: 11px; color: #666;}

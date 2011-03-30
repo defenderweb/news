@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])    
 
     if @user.save
-      redirect_to(@user, :notice => 'Post was successfully created.')
+      redirect_to(@user, :notice => 'Post was successfully created!')
     else
      render :action => "new"
     end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      redirect_to(@user, :notice => 'User was successfully updated.')
+      redirect_to(@user, :notice => 'User was successfully updated!')
     else
       render :action => "edit"
     end
