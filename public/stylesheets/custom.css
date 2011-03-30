@@ -74,7 +74,7 @@ ul#menu li a:hover {color: #e31838;}
 }
 
 #side_nav h5 {
-	font-size: 18px;
+	font-size: 19px;
 	font-weight: normal;
 	margin: 0px
 }
@@ -114,7 +114,7 @@ ul#menu li a:hover {color: #e31838;}
 }
 
 #contact_information strong {
-	font-size: 18px;
+	font-size: 19px;
 	font-weight: normal;
 }
 
@@ -139,3 +139,12 @@ ul#menu li a:hover {color: #e31838;}
 	
 }
 
+
+
+
+#footer {padding-bottom: 20px; font-size: 10px; line-height: 11px; color: #666;}
+#footer ul {list-style: none; margin: 10px;}
+#footer li {border-right: 1px solid #999; display: inline-block;}
+#footer li.last {border-right: none;}
+#footer a {color: #666; padding: 0px 10px; text-decoration: none;}
+#footer a:hover {color: #e31838; text-decoration: underline;}

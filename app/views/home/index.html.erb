@@ -5,7 +5,7 @@
 	<table>
 	<% Post.latest_posts.each do |post| %>
 		<tr>
-		<td><img src="http://cwdlimited.com/images/news/brands/icons/cwd-icon.png" height="75" width="75" /></td>
+		<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
 		<td>	
 			<i><%= post.date.strftime("%B %d %Y")  %></i>
 			<strong><%= link_to post.title.truncate(150), post %></strong>
