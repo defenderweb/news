@@ -1,0 +1,18 @@
+<p>
+Name:
+<strong><%= user.name %></strong>
+</p>
+<p>
+Email:
+<%= user.email %>
+</p>
+
+<p>
+	<%= link_to 'Show', user %> | 
+	<%= link_to 'Edit', edit_user_path(user) %> | 
+	<%= link_to 'Delete', user,
+  	:confirm => 'Are you sure?',
+  	:method => :delete %>
+</p>
+
+<br />

@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+    @title = "Users"
+  end
+  
+  
   def show
     @user = User.find(params[:id])
+    @title = "User Profile | #{@user.name}"
   end
 
   def new
