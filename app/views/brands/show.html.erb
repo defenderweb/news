@@ -50,9 +50,9 @@
 		<h2><% if @brand.categories.exists? %>Other<% else %>Products<% end %> <span class="expanded">[+]</span></h2>
 		<%= render @brand.products.without_categories %>
 		</div>
-	
-		<div class="clear"></div>
 	<% end %>
+	
+	<div class="clear"></div>
 	
 	<div class="span-8">
 		<h2>Add a Category</h2>
