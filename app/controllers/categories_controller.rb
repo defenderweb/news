@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new.xml
   def new
     @category = Category.new
+    @brand = Brand.find(params[:brand_id])
   end
 
   # GET /categories/1/edit
@@ -29,8 +30,13 @@ class CategoriesController < ApplicationController
   def create
     @brand = Brand.find(params[:brand_id])
     @category = @brand.categories.create(params[:category])    
-
-    redirect_to brand_path(@brand)    
+    
+    if @category.save
+     redirect_to(brand_path(@brand), :notice => 'Category was successfully created.') 
+    else
+     render :action => "new"
+    end
+        
   end
 
   # PUT /categories/1
@@ -40,7 +46,7 @@ class CategoriesController < ApplicationController
     @category = @brand.categories.find(params[:id])
 
     if @category.update_attributes(params[:category])
-      redirect_to(@category, :notice => 'Category was successfully updated.')
+      redirect_to(brand_categories_path(@brand), :notice => 'Category was successfully updated.')
     else
       render :action => "edit"
     end
@@ -53,6 +59,6 @@ class CategoriesController < ApplicationController
     @category = @brand.categories.find(params[:id])
     @category.destroy
 
-    redirect_to brand_path(@brand)
+    redirect_to brand_categories_path(@brand)
   end
 end

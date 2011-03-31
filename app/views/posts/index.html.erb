@@ -1,5 +1,7 @@
 <h2>All Press Releases</h2>
 
+<%= link_to 'New Press Release', new_post_path, :class => "admin new" %>
+
 <table>
   <tr>
     <th></th>
@@ -17,9 +19,9 @@
     <td><%= post.date.strftime("%B %d %Y") %></td>
     <td><%= post.title %></td>
     <td><%= post.content.truncate(150) %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', post, :class => "admin" %></td>
+    <td><%= link_to 'Edit', edit_post_path(post), :class => "admin" %></td>
+    <td><%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
   </tr>
 <% end %>
 </table>
@@ -27,4 +29,4 @@
 <br />
 
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Press Release', new_post_path, :class => "admin new" %>

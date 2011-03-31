@@ -9,12 +9,11 @@
   <%= @post.content %>
 </p>
 
-
 <div class="span-8">
 	<h3>Contact Info</h3>
 </div>
 
-<div class="span-9 push-1 last">
+<div class="span-8 push-1 last">
 	<h3>Presskits</h3>
 	<p>
 	  <%= link_to "Explore #{@post.brand.name} Presskit", @post.brand %>
@@ -35,5 +34,5 @@
 -->
 <br />
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_post_path(@post), :class => "admin" %>
+<%= link_to 'Back', posts_path, :class => "admin" %>

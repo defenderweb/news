@@ -1,5 +1,15 @@
 <%= form_for([@brand, @product]) do |product_form| %>
   
+  <% if @product.errors.any? %>
+	  <div id="errorExplanation">
+	    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+	    <ul>
+	    <% @product.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+  <% end %>
   
   <div class="field">
     <%= product_form.label :model %>
@@ -16,7 +26,10 @@
     <%= select(:product, :category_id, @brand.categories.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
   </div>
   
-  <br />
+  <div class="field">
+    <%= product_form.label :url %>
+    <%= product_form.text_field :url %>
+  </div>
   
   <div class="actions">
     <%= product_form.submit %>

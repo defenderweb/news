@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  # validates :name,  :presence => true
+  validates :model, :title,  :presence => true
   
   # has_many :posts
   belongs_to :brand

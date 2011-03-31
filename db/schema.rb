@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330145140) do
+ActiveRecord::Schema.define(:version => 20110331163220) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20110330145140) do
     t.string   "icon",       :default => "http://cwdlimited.com/images/news/brands/icons/cwd-icon.png"
     t.string   "url"
   end
+
+  add_index "brands", ["post_id"], :name => "index_brands_on_post_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110330145140) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.string   "url"
   end
 
   add_index "products", ["brand_id"], :name => "index_products_on_brand_id"

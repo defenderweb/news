@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
 
 # before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
-
+  
+  def index
+    @brand = Brand.find(params[:brand_id])
+    @products = @brand.products.all
+  end  
+  
   # GET /products/1
   # GET /products/1.xml
   def show
@@ -11,7 +16,10 @@ class ProductsController < ApplicationController
     
   end
 
-  
+  def new
+    @product = Product.new
+    @brand = Brand.find(params[:brand_id])
+  end
 
   # GET /products/1/edit
   def edit
@@ -25,10 +33,14 @@ class ProductsController < ApplicationController
   
   def create
     @brand = Brand.find(params[:brand_id])
-    @product = @brand.products.create(params[:product])
+    @product = @brand.products.create(params[:product])    
     
-
-    redirect_to brand_path(@brand)
+    if @product.save
+     redirect_to(brand_path(@brand), :notice => 'Product was successfully created.') 
+    else
+     render :action => "new"
+    end
+    
   end
 
   # PUT /products/1

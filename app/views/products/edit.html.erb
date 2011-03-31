@@ -1,6 +1,6 @@
-<h1>Editing Product</h1>
+<h2>Editing Product</h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', brand_product_path(@brand, @product) %> |
-<%= link_to 'Back', brand_path(@brand) %>
+<%= link_to 'Show', brand_product_path(@brand, @product), :class => "admin" %>
+<%= link_to 'Back', brand_path(@brand), :class => "admin" %>

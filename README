@@ -3,10 +3,109 @@ CWD News & PR Application
 Portal for CWD Press Releases, News, Press Kits and Executive Bios.
 
 
+Users
+=====
+- Once logged in, Users will be able to write, edit and delete content throughout the app
+- Users login with email address and password
+- Users are be able to change their own email address, name and password
+- Need one Admin Super User with control over all users and the creation of new users
+
+
+Posts
+=====
+- Posts are Press Releases (should probably rename this "Press Releases"!?!?)
+- Press Releases have title, date, body
+- Press Releases have a single auther (a user) which will be visible in the view under "Contact Info"
+- Press Releases have one main brand association which provides the use of the brand icon and links to the brands presskit
+- Press Releases have many brands and products associations which provide links to presskits 
+
+
+Presskits
+=========
+- Presskits have many Press Releases
+- Pressktis have many images for download (.eps, .jpg, .png, .svg) under "Images"
+- Presskits have a URL
+- Presskits have other downloads (.pdfs) and links under "More Information"
+- There are two types of Presskits:	
+	
+	Brands
+	======
+	- Brands have an icon (img url)
+	- Brands have many Products
+	- Brands show Products (if exists?) which link to Product Presskits
+	- Brands show Products in Categories (if exists?)
+	- Brands have a parent Brand; they are either top tier (CWD), a division (SVAT, BTG, TRONICS) or a child 	
+	
+	Products
+	========
+	- Products belong to a Brand
+	- Products belong to a Category
+	- Product Presskits show Brand Images as well as their own Product Images for download
+
+
+Categories
+==========
+- Belong to a Brand
+- Has many Products
+- Need to add ability to edit/delete a category; products within deleted category would have to be updated with category_id = ''
+
 
 Tags
 ====
 
 - Tags should be applied to Post
 - Tags can only be our Product or Brand names
+
+
+Executive Bios
+==============
+- Can wait
+- Will have image, name, job title, body
+
+
+News
+====
+
+- Can wait till everything else is done
+- News will be upcoming events or awards announcements
+- News will have an image thumbnail
+- News will have the ability to add images to the article
+
+
+Specific Q's for Nick
+=====================
+Is there an easier(cleaner) way to do this:
+
+	#if product url is filled in show in link, else show brand url in link
+	<% if @product.url %> 
+		<%= link_to "View #{@product.model}'s Website", @product.url, :target => "_blank" %>
+	<% else %>
+		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+	<% end %>
+		
+What's the cleanest way to do this:
+
+	#if brand url is filled in show it
+	<% if @brand.url.exists? %> 
+		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+	<% end %>
+	
+What is the cleanest, most efficient, reuseable way to show a list of posts (Press Releases) with optionional icon
+
+	#taken from home/index
+	<table>
+	<% Post.latest_posts.each do |post| %>
+		<tr>
+		<!-- What's the best method to make this image a link??  -->
+		<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
+		<td>	
+			<em><%= post.date.strftime("%B %d %Y")  %></em><br />
+			<strong><%= link_to post.title.truncate(150), post %></strong>
+			<br />
+			<%= link_to 'Edit', edit_post_path(post) %>
+	    	<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+		</td>
+	<% end %>
+	</table>
+	
 

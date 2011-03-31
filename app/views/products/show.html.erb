@@ -1,22 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div id="presskit">
+	<p id="notice"><%= notice %></p>
+	
+	
+	<img src="<%= @brand.icon %>" class="fl" />
+	
+	<h1><span>Presskits: </span><%= @brand.name %>'s <%= @product.model %></h1>
+	
+	<%= link_to 'Edit', edit_brand_product_path(@brand, @product), :class => "admin" %>
+	<%= link_to 'Back', brand_path(@brand), :class => "admin" %>
+	
+	<br />
+	<div class="span-8">
+		<h2>Information</h2>
+		<h3>Recent Press Releases</h3>
+		<ul>
+			<% if @brand.posts.latest_posts.exists? %>
+				<% @brand.posts.latest_posts.each do |post| %>
+					<li>	
+						<em><%= post.date.strftime("%B %d %Y")  %></em><br />
+						<%= link_to post.title.truncate(150), post %><br />
+						<%= link_to 'Edit', edit_post_path(post), :class => "admin" %>
+				    	<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+					</li>
+				<% end %>			
+			<% else %>
+				<li><em>No Press Releases</em></li>
+			<% end %>
+		</ul>
+		
+		<h3>More Information</h3>		
+		<% if @product.url %> 
+			<%= link_to "View #{@product.model}'s Website", @product.url, :target => "_blank" %>
+		<% else %>
+			<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+		<% end %>
+	</div>
+	
+	<div class="span-8 push-1 last">
+		<h2>Images</h2>
+		<h3>Product Images</h3>
+		<p><em>Images will be going here</em></p>
+		
+		<h3>Brand Images</h3>
+		<em>Brand images will be going here</em><br />
+		<em>Pulled from <%= @brand.name %></em>
+	</div>
+	
 
-<p>
-  <b>Model:</b>
-  <%= @product.model %>
-</p>
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @product.category_id %>
-</p>
-
-<br />
-
-	<%= link_to 'Back', brand_path(@brand) %> | 
-	<%= link_to 'Delete', [@product.brand, @product],
-  	:confirm => 'Are you sure?',
-  	:method => :delete %>
+</div> <!-- presskit -->

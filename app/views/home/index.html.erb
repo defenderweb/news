@@ -5,16 +5,24 @@
 	<table>
 	<% Post.latest_posts.each do |post| %>
 		<tr>
+		<!-- What's the best method to make this image a link??  -->
 		<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
 		<td>	
 			<em><%= post.date.strftime("%B %d %Y")  %></em><br />
-			<strong><%= link_to post.title.truncate(150), post %></strong>
-			<%= link_to 'Edit', edit_post_path(post) %>
-	    	<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+			<%= link_to post.title.truncate(150), post %>
+			<br />
+			<%= link_to 'Edit', edit_post_path(post), :class => "admin" %> 
+	    	<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
 		</td>
 	<% end %>
 	</table>
-	<%= link_to "All Press Releases", posts_path %> 
+	
+	<strong class="fr"><%= link_to "All Press Releases", posts_path %></strong> 
+	
+	<div class="clear"></div>
+	
+	<h2>Latest News</h2>
+	<em>News articles will eventually be going here</em>
 </div>	
 	
 <div class="span-6 last" id="contact_information">

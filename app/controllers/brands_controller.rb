@@ -14,6 +14,7 @@ class BrandsController < ApplicationController
   def show
     @brand = Brand.find(params[:id]) 
     @product = @brand.products.new
+    @category = @brand.categories.new
     @title = "Presskits | #{@brand.name}"    
   end
 

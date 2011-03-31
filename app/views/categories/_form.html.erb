@@ -1,5 +1,15 @@
-<%= form_for([@brand, @brand.categories.build]) do |category_form| %>
-
+<%= form_for([@brand, @category]) do |category_form| %>
+  <% if @category.errors.any? %>
+	  <div id="errorExplanation">
+	    <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+	    <ul>
+	    <% @category.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+  <% end %>
+  
   <div class="field">
     <%= category_form.label :name %>
     <%= category_form.text_field :name %>
@@ -9,3 +19,4 @@
     <%= category_form.submit %>
   </div>
 <% end %>
+

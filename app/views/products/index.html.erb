@@ -1,11 +1,11 @@
-<h1>Product Presskits</h1>
+<h2><%= @brand.name %> Products</h2>
 
 <table>
   <tr>
     <th>Model</th>
 	<th>Title</th>
-	<th>Brand</th>
-    <th></th>
+	<th>Category</th>
+	<th>URL</th>
     <th></th>
     <th></th>
   </tr>
@@ -13,17 +13,28 @@
 <% @products.each do |product| %>
   <tr>
     <td><%= product.model %></td>
-    <td><%= product.title %></td>
-    <td><%= product.brand %></td>
-
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to product.title, brand_product_path(product.brand, product) %></td>
+    <td>
+    	<% if product.category %>
+    		<%= product.category.name %>
+    	<% else %>
+    		<em>Not Set</em>
+    	<% end %>
+    </td>
+    <td>
+    	<% if product.url %>
+    		<%= link_to 'View Site', product.url %>
+    	<% else %>
+    		<em>Not Set</em>
+    	<% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_brand_product_path(@brand, product), :class => "admin" %></td>
+    <td><%= link_to 'Delete', [product.brand, product], :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Product', 'new' %>
-<%= link_to 'PR Home', '/' %>
+<%= link_to 'New Product', new_brand_product_path(@brand, @product), :class => "admin new" %>
+<%= link_to 'Back', @brand, :class => "admin" %>

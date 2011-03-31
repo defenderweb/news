@@ -1,37 +1,49 @@
-<h2>Presskits</h2>
-
-<table>
-
-	<% @main_division.each do |main_div| %>
-	  <tr>
-	    <td><img src="<%= main_div.icon %>" height="75" width="75" /></td>
-	    <td><h3><%= main_div.name %></h3><%= link_to 'Explore Presskits', main_div %></td>
+<div id="presskits">
+	<h2>Presskits</h2>
 	
-	    <td><%= link_to 'Edit', edit_brand_path(main_div) %></td>
-	    <td><%= link_to 'Destroy', main_div, :confirm => 'Are you sure?', :method => :delete %></td>
-	  </tr>
-	  <% @divisions.each do |division| %>
-		  <tr class="division">
-		    <td><img src="<%= division.icon %>" height="75" width="75" /></td>
-		    <td><h3><%= division.name %></h3><%= link_to 'Explore Presskits', division %></td>
+	<table>
+	
+		<% @main_division.each do |main_div| %>
+		  <tr>
+		    <td><img src="<%= main_div.icon %>" height="75" width="75" /></td>
+		    <td>
+		    	<h3><%= main_div.name %></h3>
+		    	<strong><%= link_to 'Explore Presskits', main_div %></strong>
+		    </td>
 		
-		    <td><%= link_to 'Edit', edit_brand_path(division) %></td>
-		    <td><%= link_to 'Destroy', division, :confirm => 'Are you sure?', :method => :delete %></td>
+		    <td><%= link_to 'Edit', edit_brand_path(main_div), :class => "admin" %></td>
+		    <td><%= link_to 'Delete', main_div, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
 		  </tr>
-		  <% get_brands_of(division).each do |brand| %>
-			  <tr>
-			    <td><img src="<%= brand.icon %>" height="75" width="75" /></td>
-			    <td><h3><%= brand.name %></h3><%= link_to 'Explore Presskits', brand %></td>
-			
-			    <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-			    <td><%= link_to 'Destroy', brand, :confirm => 'Are you sure?', :method => :delete %></td>
+		  <% @divisions.each do |division| %>
+			  <tr class="division">
+			    <td><img src="<%= division.icon %>" height="75" width="75" /></td>
+			    <td>
+			    	<h3><%= division.name %></h3>
+			    	<strong><%= link_to 'Explore Presskits', division %></strong>
+			    </td>
+				
+			    <td><%= link_to 'Edit', edit_brand_path(division), :class => "admin" %></td>
+			    <td><%= link_to 'Delete', division, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
 			  </tr>
+			  <% get_brands_of(division).each do |brand| %>
+				  <tr>
+				    <td><img src="<%= brand.icon %>" height="75" width="75" /></td>
+				    <td>
+				    	<h3><%= brand.name %></h3>
+				    	<strong><%= link_to 'Explore Presskits', brand %></strong>
+				    </td>
+				
+				    <td><%= link_to 'Edit', edit_brand_path(brand), :class => "admin" %></td>
+				    <td><%= link_to 'Delete', brand, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
+				  </tr>
+				<% end %>
 			<% end %>
 		<% end %>
-	<% end %>
-</table>
-
-<br />
-
-
-<%= link_to 'New Brand Presskit', new_brand_path %>
+	</table>
+	
+	<br />
+	
+	
+	<%= link_to 'New Brand Presskit', new_brand_path, :class => "admin new" %>
+	
+</div>

@@ -2,7 +2,7 @@
 <%= form_for(@brand) do |brand_form| %>
   <% if @brand.errors.any? %>
   <div id="errorExplanation">
-    <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this presskit from being saved:</h2>
+    <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this Brand Presskit from being saved:</h2>
     <ul>
     <% @brand.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -13,18 +13,23 @@
   
 
   <div class="field">
-    <%= brand_form.label :name %><br />
+    <%= brand_form.label :name %>
     <%= brand_form.text_field :name %>
   </div>
   
   <div class="field">
-    <%= brand_form.label :parent %><br />
+    <%= brand_form.label :parent %>
     <%= select(:brand, :parent, Brand.all.collect {|p| [ p.name, p.name ] }, {:include_blank => 'None'}) %>
   </div>
   
   <div class="field">
-    <%= brand_form.label :icon %><br />
+    <%= brand_form.label :icon %>
     <%= brand_form.text_field :icon %>
+  </div>
+  
+  <div class="field">
+    <%= brand_form.label :url %>
+    <%= brand_form.text_field :url %>
   </div>
   
   <div class="actions">

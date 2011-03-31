@@ -1,27 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div id="presskit">
+	<p id="notice"><%= notice %></p>
+	
+	
+	<img src="<%= @brand.icon %>" class="fl" />
+	
+	<h1><span>Presskits: </span><%= @brand.name %></h1>
+	
+	<%= link_to 'Edit', edit_brand_path(@brand), :class => "admin" %>
+	<%= link_to 'Back', brands_path, :class => "admin" %>
+	
+	<br />
+	<div class="span-8">
+		<h2>Information</h2>
+		<h3>Recent Press Releases</h3>
+		<ul>
+			<% if @brand.posts.latest_posts.exists? %>
+				<% @brand.posts.latest_posts.each do |post| %>
+					<li>	
+						
+						<em><%= post.date.strftime("%B %d %Y")  %></em><br />
+						<%= link_to post.title.truncate(150), post %><br />
+						<%= link_to 'Edit', edit_post_path(post), :class => "admin" %>
+				    	<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+						
+					</li>
+				<% end %>			
+			<% else %>
+				<li><em>No Press Releases</em></li>
+			<% end %>
+		</ul>
+		
+		<h3>More Information</h3>		
+		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+		
+	</div>
+	
+	<div class="span-8 push-1 last">
+		<h2>Images</h2>
+		<h3>Brand Images</h3>
+		<em>Images will be going here</em>
+	</div>
+	
+	<div class="clear"></div>
+	
+	<%= render @brand.categories %>
+	
+	<% if @brand.products.without_categories.exists? %>
+		<div class="span-8 last">
+		<h2><% if @brand.categories.exists? %>Other<% else %>Products<% end %> <span class="expanded">[+]</span></h2>
+		<%= render @brand.products.without_categories %>
+		</div>
+	
+		<div class="clear"></div>
+	<% end %>
+	
+	<div class="span-8">
+		<h2>Add a Category</h2>
+		<%= render "categories/form" %>
+		<%= link_to 'Manage Categories', brand_categories_path(@brand), :class => "admin" %>
+	</div>
+	
+	<div class="span-8 push-1 last">
+		<h2>Add a Product</h2>
+		<%= render "products/form" %>
+		<%= link_to 'Manage Products', brand_products_path(@brand), :class => "admin" %>
+	</div>
+</div> <!-- presskit -->
+	
 
-<img src="<%= @brand.icon %>" />
-
-  <h1><%= @brand.name %></h1>
-
-<br />
-
-<%= render @brand.categories %>
-
-<h2>Products</h2>
-<%= render @brand.products.without_categories %>
-
-<br />
-<h2>Add a Category</h2>
-<%= render "categories/form" %>
-
-<br />
-
-<h2>Add a Product</h2>
-<%= render "products/form" %>
-
-<br />
-
-
-<%= link_to 'Edit', edit_brand_path(@brand) %> |
-<%= link_to 'Back', brands_path %>
