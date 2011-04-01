@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
 
-# before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
+  before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
    
   # GET /brands
   def index

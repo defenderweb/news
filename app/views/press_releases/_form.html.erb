@@ -21,7 +21,7 @@
   <% end %>	
   
   <div class="field">
-    <%= press_release_form.label 'Contact' %>
+    <%= press_release_form.label :user_id, 'Contact' %>
     <%= select(:press_release, :user_id, User.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   

@@ -52,9 +52,13 @@
 	<% end %>
 	
 	<% if @brand.products.without_categories.exists? %>
-		<div class="span-8 last">
-		<h2><% if @brand.categories.exists? %>Other<% else %>Products<% end %> <span class="expanded">[+]</span></h2>
-		<%= render @brand.products.without_categories %>
+		<% if @brand.categories.count.odd? %>
+			<div class="span-8 push-1 last">
+		<% else %>
+			<div class="span-8 last">
+		<% end %>
+			<h2><% if @brand.categories.exists? %>Other<% else %>Products<% end %> <span class="expanded">[+]</span></h2>
+			<%= render @brand.products.without_categories %>
 		</div>
 	<% end %>
 	

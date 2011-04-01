@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   
+  before_filter :authenticate, :except => [:show]
   
   def index
     @users = User.all

@@ -139,7 +139,20 @@ ensure the user goes back to the same page they came from?
 	2. There must be some ruby magic to grab the page you came from ... right?
 	
 
-Best way to have "span-1 last" added to the class name of every other category class
+Best way to have "push-1 last" added to the class name of every other category class?
+
+	<% @brand.categories.each_with_index do |category, index| %>
+		<% if category.products.exists? %>
+			<% if index.even? %>
+				<div class="clear"></div>
+				<div class="span-8">
+			<% else %>
+				<div class="span-8 push-1 last">
+			<% end%>
+				<%= render category %>
+			</div>
+		<% end %>
+	<% end %>
 	
 	
 

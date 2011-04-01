@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-# before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
+  before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
   
   def index
     @brand = Brand.find(params[:brand_id])
