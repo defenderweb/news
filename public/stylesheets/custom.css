@@ -47,12 +47,7 @@ h2 {
 	border-bottom: 1px solid #ccc;
 }
 
-#presskits h3 {
-	margin: 0;
-	font-weight: normal;
-	font-size: 36px;
-	line-height: 36px;
-}
+
 
 em {
 	color: #999;
@@ -205,6 +200,29 @@ ul#menu li a:hover {color: #e31838;}
 }
 
 /* PRESSKITS */
+
+#presskits h3 {
+	margin: 0;
+	margin-top: 10px;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 36px;
+}
+
+#presskits img {
+	margin: 0px 10px;
+}
+
+#presskits td.division {
+	padding-left: 80px;
+}
+
+#presskits td.brand {
+	padding-left: 160px;
+}
+
+
+/* PRESSKIT SHOW */
 
 #presskit h2 {
 	font-weight: normal;	

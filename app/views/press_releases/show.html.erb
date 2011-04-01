@@ -13,7 +13,7 @@
 
 <p>
 <%= link_to 'Edit', edit_press_release_path(@press_release), :class => "admin" %>
-<%= link_to 'Back', press_releases_path, :class => "admin" %>
+<%= link_to 'Delete', @press_release, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
 </p>
 
 <div class="clear"></div>

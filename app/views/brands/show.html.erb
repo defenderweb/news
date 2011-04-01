@@ -26,8 +26,9 @@
 		</ul>
 		
 		<h3>More Information</h3>		
-		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
-		
+		<p>
+			<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+		</p>
 	</div>
 	
 	<div class="span-8 push-1 last">
@@ -36,9 +37,19 @@
 		<em>Images will be going here</em>
 	</div>
 	
-	<div class="clear"></div>
 	
-	<%= render @brand.categories %>
+	<% @brand.categories.each_with_index do |category, index| %>
+		<% if category.products.exists? %>
+			<% if index.even? %>
+				<div class="clear"></div>
+				<div class="span-8">
+			<% else %>
+				<div class="span-8 push-1 last">
+			<% end%>
+				<%= render category %>
+			</div>
+		<% end %>
+	<% end %>
 	
 	<% if @brand.products.without_categories.exists? %>
 		<div class="span-8 last">
