@@ -1,23 +1,23 @@
 
 
-<div class="span-11" id="latest_posts">
+<div class="span-11" id="latest_press_releases">
 	<h2>Latest Press Releases</h2>
 	<table>
-	<% Post.latest_posts.each do |post| %>
+	<% PressRelease.latest_press_releases.each do |press_release| %>
 		<tr>
 		<!-- What's the best method to make this image a link??  -->
-		<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
+		<td><img src="<%= press_release.brand.icon %>" height="75" width="75" /></td>
 		<td>	
-			<em><%= post.date.strftime("%B %d %Y")  %></em><br />
-			<%= link_to post.title.truncate(150), post %>
+			<em><%= press_release.date.strftime("%B %d %Y")  %></em><br />
+			<%= link_to press_release.title.truncate(150), press_release %>
 			<br />
-			<%= link_to 'Edit', edit_post_path(post), :class => "admin" %> 
-	    	<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+			<%= link_to 'Edit', edit_press_release_path(press_release), :class => "admin" %> 
+	    	<%= link_to 'Delete', press_release, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
 		</td>
 	<% end %>
 	</table>
 	
-	<strong class="fr"><%= link_to "All Press Releases", posts_path %></strong> 
+	<strong class="fr"><%= link_to "All Press Releases", press_releases_path %></strong> 
 	
 	<div class="clear"></div>
 	

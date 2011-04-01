@@ -74,14 +74,20 @@ News
 
 Specific Q's for Nick
 =====================
+
+
 Is there an easier(cleaner) way to do this:
 
-	#if product url is filled in show in link, else show brand url in link
+	#if product url is filled in show link, else show brand url link
 	<% if @product.url %> 
 		<%= link_to "View #{@product.model}'s Website", @product.url, :target => "_blank" %>
 	<% else %>
 		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
 	<% end %>
+	
+	(should i be writing stuff like the above in one solid block of ruby?)
+		
+		
 		
 What's the cleanest way to do this:
 
@@ -90,7 +96,9 @@ What's the cleanest way to do this:
 		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
 	<% end %>
 	
-What is the cleanest, most efficient, reuseable way to show a list of posts (Press Releases) with optionional icon
+	
+	
+What is the cleanest, most efficient, reuseable way to show a list of posts (* renamed press_releases) with optionional icon
 
 	#taken from home/index
 	<table>
@@ -107,5 +115,18 @@ What is the cleanest, most efficient, reuseable way to show a list of posts (Pre
 		</td>
 	<% end %>
 	</table>
+	
+	
+	
+With all of these "Back" and "Cancel" buttons, what's the best way to 
+ensure the user goes back to the same page they came from?
+
+	1. Could simply limit amount of new, edit, and delete links.  
+		E.G. only have "Edit" links on the "Show" page; right now you 
+		can get to "Product#Edit" from the "Brand#Show" page which causes 
+		confusion when redirected to "Product#Show" after update
+
+	2. There must be some ruby magic to grab the page you came from ... right?
+	
 	
 

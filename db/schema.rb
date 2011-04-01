@@ -10,19 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331163220) do
+ActiveRecord::Schema.define(:version => 20110401131252) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
-    t.integer  "post_id"
+    t.integer  "press_release_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "parent",     :default => "CWD"
-    t.string   "icon",       :default => "http://cwdlimited.com/images/news/brands/icons/cwd-icon.png"
+    t.string   "parent",           :default => "CWD"
+    t.string   "icon",             :default => "http://cwdlimited.com/images/news/brands/icons/cwd-icon.png"
     t.string   "url"
   end
 
-  add_index "brands", ["post_id"], :name => "index_brands_on_post_id"
+  add_index "brands", ["press_release_id"], :name => "index_brands_on_post_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -36,13 +36,12 @@ ActiveRecord::Schema.define(:version => 20110331163220) do
   create_table "comments", :force => true do |t|
     t.string   "commenter"
     t.text     "body"
-    t.integer  "post_id"
+    t.integer  "press_release_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "posts", :force => true do |t|
-    t.string   "name"
+  create_table "press_releases", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
@@ -51,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20110331163220) do
     t.integer  "brand_id"
   end
 
-  add_index "posts", ["brand_id"], :name => "index_posts_on_brand_id"
+  add_index "press_releases", ["brand_id"], :name => "index_posts_on_brand_id"
 
   create_table "products", :force => true do |t|
     t.string   "title"
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20110331163220) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.integer  "post_id"
+    t.integer  "press_release_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

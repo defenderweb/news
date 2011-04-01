@@ -5,7 +5,7 @@ News::Application.routes.draw do
 
   match '/signup',  :to => 'users#new'
 
-  resources :posts do
+  resources :press_releases do
     resources :comments
   end
   

@@ -1,0 +1,43 @@
+<% @press_release.tags.build %>
+<%= form_for(@press_release) do |press_release_form| %>
+  <% if @press_release.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this Press Release from being saved:</h2>
+    <ul>
+    <% @press_release.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <% if press_release_form.object.nil? || press_release_form.object.new_record? %>
+	<%= press_release_form.hidden_field :date, :value => Time.now %>
+  <% else %>
+  	<div class="field">
+	  <%= press_release_form.label :date %>
+	  <%= press_release_form.text_field :date %>
+	</div>
+  <% end %>	
+  
+  <div class="field">
+    <%= press_release_form.label :title %>
+    <%= press_release_form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= press_release_form.label :content %>
+    <%= press_release_form.text_area :content %>
+  </div>
+  <h2>Tags</h2>
+  
+  <div class="field">
+    <%= press_release_form.label :brand_id %>
+    <%= select(:press_release, :brand_id, Brand.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  
+  <%= render :partial => 'tags/form',
+             :locals => {:form => press_release_form} %>
+  <div class="actions">
+    <%= press_release_form.submit %>
+  </div>
+<% end %>

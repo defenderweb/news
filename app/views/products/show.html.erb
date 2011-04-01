@@ -14,13 +14,13 @@
 		<h2>Information</h2>
 		<h3>Recent Press Releases</h3>
 		<ul>
-			<% if @brand.posts.latest_posts.exists? %>
-				<% @brand.posts.latest_posts.each do |post| %>
+			<% if @brand.press_releases.latest_press_releases.exists? %>
+				<% @brand.press_releases.latest_press_releases.each do |press_release| %>
 					<li>	
-						<em><%= post.date.strftime("%B %d %Y")  %></em><br />
-						<%= link_to post.title.truncate(150), post %><br />
-						<%= link_to 'Edit', edit_post_path(post), :class => "admin" %>
-				    	<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+						<em><%= press_release.date.strftime("%B %d %Y")  %></em><br />
+						<%= link_to press_release.title.truncate(150), press_release %><br />
+						<%= link_to 'Edit', edit_press_release_path(press_release), :class => "admin" %>
+				    	<%= link_to 'Delete', press_release, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
 					</li>
 				<% end %>			
 			<% else %>

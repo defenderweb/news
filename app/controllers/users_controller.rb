@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])    
 
     if @user.save
-      redirect_to(@user, :notice => 'Post was successfully created!')
+      redirect_to(@user, :notice => 'User was successfully created!')
     else
      render :action => "new"
     end
