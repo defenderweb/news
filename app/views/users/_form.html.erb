@@ -18,19 +18,27 @@
   </div>
   
   <div class="field">
+    <%= user_form.label :title %>
+    <%= user_form.text_field :title %>
+  </div>
+  
+  <div class="field">
     <%= user_form.label :email %>
     <%= user_form.text_field :email %>
   </div>
   
-  <div class="field">
-    <%= user_form.label :password %>
-    <%= user_form.text_field :password, :type => "password" %>
-  </div>
+   <% # if user_form.object.nil? || user_form.object.new_record? %>
+	<div class="field">
+	    <%= user_form.label :password %>
+	    <%= user_form.text_field :password, :type => "password" %>
+	  </div>
+	  
+	  <div class="field">
+	    <%= user_form.label :password_confirmation %>
+	    <%= user_form.text_field :password_confirmation, :type => "password" %>
+	  </div>
+  <% # end %>	
   
-  <div class="field">
-    <%= user_form.label :password_confirmation %>
-    <%= user_form.text_field :password_confirmation, :type => "password" %>
-  </div>
   
   
   

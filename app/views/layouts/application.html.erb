@@ -20,7 +20,12 @@
         		<%= render 'layouts/side_nav' %>
 			</div>
 			
-			<div class="span-17 last">			
+			<div class="span-17 last">	
+				<span class="fr">
+					<%= link_to 'Manage Users', '/users', :class => "admin" %>
+					<%= link_to 'Logout', '#', :class => "admin" %>
+				</span>	
+					
 				<%= yield %>
 			</div>
 			<div class="clear"></div>

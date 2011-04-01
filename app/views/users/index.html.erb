@@ -2,6 +2,6 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= render @users %>
+<%= render @users, :template => "users" %>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, :class => "admin new" %>

@@ -102,18 +102,28 @@ What is the cleanest, most efficient, reuseable way to show a list of posts (* r
 
 	#taken from home/index
 	<table>
-	<% Post.latest_posts.each do |post| %>
-		<tr>
-		<!-- What's the best method to make this image a link??  -->
-		<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
-		<td>	
-			<em><%= post.date.strftime("%B %d %Y")  %></em><br />
-			<strong><%= link_to post.title.truncate(150), post %></strong>
-			<br />
-			<%= link_to 'Edit', edit_post_path(post) %>
-	    	<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
-		</td>
-	<% end %>
+		<% Post.latest_posts.each do |post| %>
+			<tr>
+			<!-- What's the best method to make this image a link??  -->
+			<td><img src="<%= post.brand.icon %>" height="75" width="75" /></td>
+			<td>	
+				<em><%= post.date.strftime("%B %d %Y")  %></em><br />
+				<strong><%= link_to post.title.truncate(150), post %></strong>
+				<br />
+				<%= link_to 'Edit', edit_post_path(post) %>
+		    	<%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+			</td>
+		<% end %>
+	</table>
+	
+	#REFACTORED TO:
+	<table>
+		<% PressRelease.latest_press_releases.each do |press_release| %>
+			<tr>
+				<td><%= image_tag press_release.brand.icon, {:height => 75 } %></td>
+				<td><%= render(press_release) %></td>
+			</tr>
+		<% end %>
 	</table>
 	
 	
@@ -127,6 +137,9 @@ ensure the user goes back to the same page they came from?
 		confusion when redirected to "Product#Show" after update
 
 	2. There must be some ruby magic to grab the page you came from ... right?
+	
+
+Best way to have "span-1 last" added to the class name of every other category class
 	
 	
 

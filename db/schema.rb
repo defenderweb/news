@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401131252) do
+ActiveRecord::Schema.define(:version => 20110401155349) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(:version => 20110401131252) do
     t.datetime "updated_at"
     t.date     "date",       :default => '2011-03-28'
     t.integer  "brand_id"
+    t.integer  "user_id"
   end
 
   add_index "press_releases", ["brand_id"], :name => "index_posts_on_brand_id"
+  add_index "press_releases", ["user_id"], :name => "index_press_releases_on_user_id"
 
   create_table "products", :force => true do |t|
     t.string   "title"
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20110401131252) do
     t.datetime "updated_at"
     t.string   "salt"
     t.string   "encrypted_password"
+    t.string   "title"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -4,17 +4,29 @@
 
 <h1><%= @press_release.title %></h1>
 
+
+
 <em><%= @press_release.date.strftime("%B %d %Y") %></em>
 <p>
   <%= @press_release.content %>
 </p>
 
+<p>
+<%= link_to 'Edit', edit_press_release_path(@press_release), :class => "admin" %>
+<%= link_to 'Back', press_releases_path, :class => "admin" %>
+</p>
+
+<div class="clear"></div>
+
 <div class="span-8">
 	<h3>Contact Info</h3>
+	<p>
+		<%= render(@press_release.user) %>
+	</p>
 </div>
 
 <div class="span-8 push-1 last">
-	<h3>Presskits</h3>
+	<h3>Related Presskits</h3>
 	<p>
 	  <%= link_to "Explore #{@press_release.brand.name} Presskit", @press_release.brand %>
 	</p>
@@ -34,5 +46,4 @@
 -->
 <br />
 
-<%= link_to 'Edit', edit_press_release_path(@press_release), :class => "admin" %>
-<%= link_to 'Back', press_releases_path, :class => "admin" %>
+

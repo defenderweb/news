@@ -1,18 +1,15 @@
-<p>
-Name:
-<strong><%= user.name %></strong>
-</p>
-<p>
-Email:
-<%= user.email %>
-</p>
 
-<p>
-	<%= link_to 'Show', user %> | 
-	<%= link_to 'Edit', edit_user_path(user) %> | 
-	<%= link_to 'Delete', user,
-  	:confirm => 'Are you sure?',
-  	:method => :delete %>
-</p>
+	<strong><%= user.name %></strong><br />
+	<em><%= user.title %></em><br />
+	<%= mail_to user.email, user.email %>
 
-<br />
+
+<% if @users %>
+	<p>
+		<%= link_to 'Edit', edit_user_path(user), :class => "admin" %> 
+		<%= link_to 'Delete', user,
+	  	:confirm => 'Are you sure?',
+	  	:method => :delete, 
+	  	:class => "admin" %>
+	</p>
+<% end %>

@@ -3,18 +3,12 @@
 <div class="span-11" id="latest_press_releases">
 	<h2>Latest Press Releases</h2>
 	<table>
-	<% PressRelease.latest_press_releases.each do |press_release| %>
-		<tr>
-		<!-- What's the best method to make this image a link??  -->
-		<td><img src="<%= press_release.brand.icon %>" height="75" width="75" /></td>
-		<td>	
-			<em><%= press_release.date.strftime("%B %d %Y")  %></em><br />
-			<%= link_to press_release.title.truncate(150), press_release %>
-			<br />
-			<%= link_to 'Edit', edit_press_release_path(press_release), :class => "admin" %> 
-	    	<%= link_to 'Delete', press_release, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
-		</td>
-	<% end %>
+		<% PressRelease.latest_press_releases.each do |press_release| %>
+			<tr>
+				<td><%= image_tag press_release.brand.icon, {:height => 75 } %></td>
+				<td><%= render(press_release) %></td>
+			</tr>
+		<% end %>
 	</table>
 	
 	<strong class="fr"><%= link_to "All Press Releases", press_releases_path %></strong> 

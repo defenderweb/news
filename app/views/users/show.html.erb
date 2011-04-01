@@ -1,14 +1,10 @@
 <h2>User Profile</h2>
 <p id="notice"><%= notice %></p>
+
 <p>
-Name:
-<strong><%= @user.name %></strong>
-</p>
-<p>
-Email:
-<%= @user.email %>
+<strong><%= @user.name %></strong><br />
+<em><%= @user.title %></em><br />
+<%= mail_to @user.email, @user.email %>
 </p>
 
-<br />
-
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path, :class => "admin" %>

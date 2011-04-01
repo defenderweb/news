@@ -1,10 +1,4 @@
 <p>
   	<%= link_to "#{product.title}", [product.brand, product] %><br />
   	<em><%= product.model %></em>
-	<br />
-	<%= link_to 'Edit', edit_brand_product_path(@brand, product), :class => "admin" %>
-	<%= link_to 'Delete', [product.brand, product],
-  	:confirm => 'Are you sure?',
-  	:method => :delete, 
-  	:class => "admin" %>
 </p>

@@ -11,8 +11,7 @@
 		    	<strong><%= link_to 'Explore Presskits', main_div %></strong>
 		    </td>
 		
-		    <td><%= link_to 'Edit', edit_brand_path(main_div), :class => "admin" %></td>
-		    <td><%= link_to 'Delete', main_div, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
+		    
 		  </tr>
 		  <% @divisions.each do |division| %>
 			  <tr class="division">
@@ -22,8 +21,7 @@
 			    	<strong><%= link_to 'Explore Presskits', division %></strong>
 			    </td>
 				
-			    <td><%= link_to 'Edit', edit_brand_path(division), :class => "admin" %></td>
-			    <td><%= link_to 'Delete', division, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
+			    
 			  </tr>
 			  <% get_brands_of(division).each do |brand| %>
 				  <tr>
@@ -33,8 +31,7 @@
 				    	<strong><%= link_to 'Explore Presskits', brand %></strong>
 				    </td>
 				
-				    <td><%= link_to 'Edit', edit_brand_path(brand), :class => "admin" %></td>
-				    <td><%= link_to 'Delete', brand, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
+				    
 				  </tr>
 				<% end %>
 			<% end %>

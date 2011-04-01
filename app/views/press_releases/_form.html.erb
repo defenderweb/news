@@ -21,6 +21,11 @@
   <% end %>	
   
   <div class="field">
+    <%= press_release_form.label 'Contact' %>
+    <%= select(:press_release, :user_id, User.all.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  
+  <div class="field">
     <%= press_release_form.label :title %>
     <%= press_release_form.text_field :title %>
   </div>

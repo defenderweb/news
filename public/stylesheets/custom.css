@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6, .button, #contact_information strong {font-family: "Myri
 h1 {
 	font-weight: normal;
 	font-size: 36px;
-	line-height: 30px;
+	line-height: 40px;
 }
 
 h1 span {
@@ -192,10 +192,10 @@ ul#menu li a:hover {color: #e31838;}
 	border-bottom: 1px solid #ccc;
 }
 
-#latest_posts {
+#latest_press_releases {
 	line-height: 1.5em;
 }
-#latest_posts td {
+#latest_press_releases td {
 	padding: 0px 10px;
 	padding-top: 2px;
 }
