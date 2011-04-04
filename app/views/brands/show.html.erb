@@ -15,11 +15,7 @@
 		<h3>Recent Press Releases</h3>
 		<ul>
 			<% if @brand.press_releases.latest_press_releases.exists? %>
-				<% @brand.press_releases.latest_press_releases.each do |press_release| %>
-					<li>	
-						<%= render(press_release) %>						
-					</li>
-				<% end %>			
+        <%= render 'latest_press_releases' %>
 			<% else %>
 				<li><em>No Press Releases</em></li>
 			<% end %>
@@ -39,13 +35,13 @@
 	
 	
 	<% @brand.categories_with_products.each do |category| %>
-		<div class="span-8 <%= cycle('clear', 'push-1 last ') %>">
+		<div class="span-8 <%= cycle('clear', 'push-1 last') %>">
 			<%= render category %>
 		</div>
 	<% end %>
 	
 	<% if @brand.products.without_categories.exists? %>
-		<div class="span-8 <%= cycle('clear', 'push-1 last ') %>">
+		<div class="span-8 <%= cycle('clear', 'push-1 last') %>">
 			<h2><%= @brand.categories.exists? ? 'Other' : 'Products' %> <span class="expanded">[+]</span></h2>
 			<%= render @brand.products.without_categories %>
 		</div>
