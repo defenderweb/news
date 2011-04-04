@@ -29,11 +29,8 @@
 		</ul>
 		
 		<h3>More Information</h3>		
-		<% if @product.url %> 
-			<%= link_to "View #{@product.model}'s Website", @product.url, :target => "_blank" %>
-		<% else %>
-			<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
-		<% end %>
+		<%= product_website_link(@product, :new_window => false) %>
+
 	</div>
 	
 	<div class="span-8 push-1 last">

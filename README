@@ -84,18 +84,6 @@ News
 
 Specific Q's for Nick
 =====================
-
-
-Is there an easier(cleaner) way to do this:
-
-	#if product url is filled in show link, else show brand url link
-	<% if @product.url %> 
-		<%= link_to "View #{@product.model}'s Website", @product.url, :target => "_blank" %>
-	<% else %>
-		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
-	<% end %>
-	
-	(should i be writing stuff like the above in one solid block of ruby?)
 		
 		
 		
