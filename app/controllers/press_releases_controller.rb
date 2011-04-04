@@ -1,11 +1,12 @@
 class PressReleasesController < ApplicationController
   
    before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
+   before_filter :set_page_title, :except => [:index]
    
   # GET /press_releases
   # GET /press_releases.xml
   def index
-    @title = "All Press Releases"
+    page_title << 'All Press Releases'
     @press_releases = PressRelease.all :order => "date DESC"
     
     @brands = Brand.all
@@ -67,4 +68,10 @@ class PressReleasesController < ApplicationController
     redirect_to(press_releases_url)
       
   end
+  
+  private
+
+    def set_page_title
+      page_title << "Press Releases"
+    end
 end

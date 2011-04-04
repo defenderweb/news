@@ -1,11 +1,6 @@
 module ApplicationHelper
 # Return a title on a per-page basis.
-  def title
-    base_title = "News & PR"
-    if @title.nil?
-      base_title
-    else
-      "#{base_title} | #{@title}"
-    end
+  def page_title(base_title)
+    [base_title, @page_title].flatten.compact.join(' | ')
   end
 end

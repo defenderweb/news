@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
       (user_name == 'admin' && password == 'foobar') || (user_name == 'jeffm@cwdlimited.com' && password == 'foobar')
     end if Rails.env.production?
   end
+  
+  def page_title
+    @page_title ||= []
+  end
 end
