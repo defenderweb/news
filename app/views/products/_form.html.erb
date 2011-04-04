@@ -1,15 +1,6 @@
 <%= form_for([@brand, @product]) do |product_form| %>
   
-  <% if @product.errors.any? %>
-	  <div id="errorExplanation">
-	    <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-	    <ul>
-	    <% @product.errors.full_messages.each do |msg| %>
-	      <li><%= msg %></li>
-	    <% end %>
-	    </ul>
-	  </div>
-  <% end %>
+  <%= render 'shared/error_messages', :object => product_form.object %>
   
   <div class="field">
     <%= product_form.label :model %>

@@ -1,16 +1,7 @@
 
 <%= form_for(@brand) do |brand_form| %>
-  <% if @brand.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@brand.errors.count, "error") %> prohibited this Brand Presskit from being saved:</h2>
-    <ul>
-    <% @brand.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  
+
+  <%= render 'shared/error_messages', :object => brand_form.object %> 
 
   <div class="field">
     <%= brand_form.label :name %>

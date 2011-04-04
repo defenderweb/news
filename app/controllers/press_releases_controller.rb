@@ -8,6 +8,7 @@ class PressReleasesController < ApplicationController
   def index
     page_title << 'All Press Releases'
     @press_releases = PressRelease.all :order => "date DESC"
+    #@press_releases = PressRelease.paginate(:page => params[:page])
     
     @brands = Brand.all
 

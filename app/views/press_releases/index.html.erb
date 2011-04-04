@@ -1,5 +1,7 @@
 <h2>All Press Releases</h2>
 
+
+
 <table>
 	<% @press_releases.each do |press_release| %>
 	  <tr>
@@ -8,7 +10,9 @@
 	    <td><%= render(press_release.user) %></td>
 	  </tr>
 	<% end %>
-</table>
+</table>	
+
+
 
 <br />
 

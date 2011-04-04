@@ -21,8 +21,12 @@
 			</div>
 			
 			<div class="span-17 last">	
-				<span class="fr">
-					
+				
+				<% flash.each do |key, value| %>
+				  	<div class="flash <%= key %>"><%= value %></div>
+				<% end %>
+				
+				<span class="fr">					
 					<% if signed_in? %>
 						<%= link_to 'Manage Users', '/users', :class => "admin" %>
 						<%= link_to "My Profile", current_user, :class => "admin" %>
@@ -30,7 +34,7 @@
 					<% else %>
 						<%= link_to "Log In", signin_path %>
 					<% end %>
-				</span>	
+				</span>					
 				
 				<%= yield %>
 			</div>

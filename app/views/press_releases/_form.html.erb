@@ -1,15 +1,8 @@
 <% @press_release.tags.build %>
 <%= form_for(@press_release) do |press_release_form| %>
-  <% if @press_release.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this Press Release from being saved:</h2>
-    <ul>
-    <% @press_release.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
+  
+  <%= render 'shared/error_messages', :object => press_release_form.object %>
+
   
   <% if press_release_form.object.nil? || press_release_form.object.new_record? %>
 	<%= press_release_form.hidden_field :date, :value => Time.now %>

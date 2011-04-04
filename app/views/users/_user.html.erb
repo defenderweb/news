@@ -7,9 +7,11 @@
 <% if @users %>
 	<p>
 		<%= link_to 'Edit', edit_user_path(user), :class => "admin" %> 
-		<%= link_to 'Delete', user,
-	  	:confirm => 'Are you sure?',
-	  	:method => :delete, 
-	  	:class => "admin" %>
+		<% if current_user.admin? %>
+			<%= link_to 'Delete', user,
+		  	:confirm => 'Are you sure?',
+		  	:method => :delete, 
+		  	:class => "admin" %>
+		<% end %>
 	</p>
 <% end %>

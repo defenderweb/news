@@ -1,16 +1,8 @@
-<% if @user.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+
 
 <%= form_for(@user) do |user_form| %>
   
+  <%= render 'shared/error_messages', :object => user_form.object %>
   
   <div class="field">
     <%= user_form.label :name %>
