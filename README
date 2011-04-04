@@ -90,9 +90,9 @@ Specific Q's for Nick
 What's the cleanest way to do this:
 
 	#if brand url is filled in show it
-	<% if @brand.url.exists? %> 
-		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
-	<% end %>
+
+		<%= link_to_if @brand.url.present?, "View #{@brand.name}'s Website", @brand.url, :target => "_blank" %>
+		<%= link_to "View #{@brand.name}'s Website", @brand.url, :target => "_blank" if @brand.url.present? %>
 	
 	
 	
@@ -136,21 +136,3 @@ ensure the user goes back to the same page they came from?
 
 	2. There must be some ruby magic to grab the page you came from ... right?
 	
-
-Best way to have "push-1 last" added to the class name of every other category class?
-
-	<% @brand.categories.each_with_index do |category, index| %>
-		<% if category.products.exists? %>
-			<% if index.even? %>
-				<div class="clear"></div>
-				<div class="span-8">
-			<% else %>
-				<div class="span-8 push-1 last">
-			<% end%>
-				<%= render category %>
-			</div>
-		<% end %>
-	<% end %>
-	
-	
-

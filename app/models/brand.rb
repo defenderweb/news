@@ -8,4 +8,9 @@ class Brand < ActiveRecord::Base
   
   scope :divisions, where(:parent => "CWD")
   scope :main_division, where(:parent => "")
+  
+  
+  def categories_with_products
+    self.categories.select{|c| c.products.exists? }
+  end
 end
