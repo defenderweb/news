@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
 
   before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
+  before_filter :set_page_title, :except => [:index]
   
   def index
     @brand = Brand.find(params[:brand_id])
     @products = @brand.products.all
+    page_title << @brand.name << 'Products'
   end  
   
   # GET /products/1
@@ -12,19 +14,21 @@ class ProductsController < ApplicationController
   def show
     @brand = Brand.find(params[:brand_id])
     @product = Product.find(params[:id]) 
-    @title = "Presskits | #{@brand.name} | #{@product.title} "
+    page_title << @brand.name << @product.model
     
   end
 
   def new
     @product = Product.new
     @brand = Brand.find(params[:brand_id])
+    page_title << @brand.name << 'Products' << 'New'
   end
 
   # GET /products/1/edit
   def edit
     @brand = Brand.find(params[:brand_id])
     @product = @brand.products.find(params[:id])
+    page_title << @brand.name << @product.model << 'Edit'
     
   end
 
@@ -66,4 +70,10 @@ class ProductsController < ApplicationController
 
     redirect_to brand_path(@brand)
   end
+  
+  private
+
+    def set_page_title
+      page_title << "Presskits"
+    end
 end
