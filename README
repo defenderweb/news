@@ -2,6 +2,16 @@ CWD News & PR Application
 
 Portal for CWD Press Releases, News, Press Kits and Executive Bios.
 
+Heroku
+======
+
+To setup heroku on another computer:
+
+  gem install heroku
+  cd into app directory
+  heroku login
+  git remote add heroku git@heroku.com:appname.git
+
 
 Users
 =====
