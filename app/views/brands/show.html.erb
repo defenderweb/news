@@ -15,7 +15,7 @@
 		<h3>Recent Press Releases</h3>
 		<ul>
 			<% if @brand.press_releases.latest_press_releases.exists? %>
-        <%= render 'latest_press_releases' %>
+        		<%= render 'latest_press_releases' %>
 			<% else %>
 				<li><em>No Press Releases</em></li>
 			<% end %>

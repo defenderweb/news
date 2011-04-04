@@ -22,7 +22,7 @@
     <%= select(:brand, :parent, Brand.all.collect {|p| [ p.name, p.name ] }, {:include_blank => 'None'}) %>
   </div>
 
-  <%- if @brand.divison? -%>
+  <%- if @brand.divison? && ( !brand_form.object.nil? && !brand_form.object.new_record? ) -%>
     <div class="field">
       <%= brand_form.label :sort_order %>
       <%= brand_form.text_field :sort_order %>

@@ -9,7 +9,7 @@ class Brand < ActiveRecord::Base
 
 
   def categories_with_products
-    self.categories.select{|c| c.products.exists? }
+    self.categories.order('sort_order, name').select{|c| c.products.exists? }
   end
 
   # ToDo: Refactor brand to use parent_id instead of the parent name

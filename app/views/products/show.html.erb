@@ -17,19 +17,19 @@
 		<h2>Information</h2>
 		<h3>Recent Press Releases</h3>
 		<ul>
-			<% if @brand.press_releases.latest_press_releases.exists? %>
-				<% @brand.press_releases.latest_press_releases.each do |press_release| %>
-					<li>	
-						<%= render(press_release) %>
-					</li>
-				<% end %>			
-			<% else %>
+			
+			<% @brand.press_releases.latest_press_releases.each do |press_release| %>
+				<li>	
+					<%= render(press_release) %>
+				</li>
+			<% end %>			
+			<% if @brand.press_releases.latest_press_releases.empty? %>
 				<li><em>No Press Releases</em></li>
 			<% end %>
 		</ul>
 		
 		<h3>More Information</h3>		
-		<%= product_website_link(@product, :new_window => false) %>
+		<%= product_website_link(@product, :new_window => true) %>
 
 	</div>
 	

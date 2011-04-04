@@ -6,27 +6,29 @@
   <tr>
     <th>Name</th>
     <th># Products</th>
+    <th>Sort Order</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-<% if @categories.length > 0 %>
 	<% @categories.each do |category| %>
 	  <tr>
 	    <td><%= category.name %></td>
 	    <td><%= category.products.length %></td>
+	    <%- # ToDo: Enable Category.sort_order editing from here with an "Update" button at bottom -%>
+	    <td><%= category.sort_order %></td>
 	    <td><%= link_to 'Edit', edit_brand_category_path(@brand, category), :class => "admin" %></td>
 	    <td><%= link_to 'Delete', [category.brand, category], :confirm => 'Are you sure?', :method => :delete, :class => "admin" %></td>
 	  </tr>	
 	<% end %>
-<% else %>
-	<tr>
-	    <td><em>No Categories</em></td>
-	    <td></td>
-	    <td></td>
-	    <td></td>
-	</tr>
-<% end %>
+	<% if @categories.empty? %>
+		<tr>
+		    <td><em>No Categories</em></td>
+		    <td></td>
+		    <td></td>
+		    <td></td>
+		</tr>
+	<% end %>
 </table>
 
 <br />
