@@ -214,12 +214,16 @@ ul#menu li a:hover {color: #e31838;}
 	margin: 0px 10px;
 }
 
-#presskits td.division {
+#presskits td.level_1 {
 	padding-left: 80px;
 }
 
-#presskits td.brand {
+#presskits td.level_2 {
 	padding-left: 160px;
+}
+
+#presskits td.level_3 {
+	padding-left: 240px;
 }
 
 

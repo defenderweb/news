@@ -4,13 +4,29 @@ class Brand < ActiveRecord::Base
   has_many :press_releases
   has_many :products
   has_many :categories
-  # belongs_to :parent, :class_name => 'Brand'
-  
-  scope :divisions, where(:parent => "CWD")
-  scope :main_division, where(:parent => "")
-  
-  
+
+  scope :main_divisions, where(:parent => "")
+
+
   def categories_with_products
     self.categories.select{|c| c.products.exists? }
   end
+
+  # ToDo: Refactor brand to use parent_id instead of the parent name
+  def children
+    Brand.where(:parent => self.name).order('sort_order, name')
+  end
+
+  def parent_brand
+    Brand.where(:name => self.parent).first
+  end
+
+  def has_parent?
+    self.parent.empty?
+  end
+
+  def divison?
+    self.parent_brand.present? && self.parent_brand.has_parent?
+  end
+
 end

@@ -5,9 +5,7 @@ class BrandsController < ApplicationController
   # GET /brands
   def index
     @title = "Presskits"
-    @brands = Brand.all :order => "parent"
-    @divisions = Brand.divisions
-    @main_division = Brand.main_division
+    @main_divisions = Brand.main_divisions
   end
 
   # GET /brands/1

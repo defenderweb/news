@@ -1,0 +1,4 @@
+<tr>
+  <td class="level_<%= level %>"><%= render brand_tree %></td>		    
+</tr>
+<%= render :partial => 'brand_tree', :collection => brand_tree.children, :locals => {:level => level + 1} %>

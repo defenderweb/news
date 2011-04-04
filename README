@@ -84,3 +84,11 @@ News
 
 Specific Q's for Nick
 =====================
+
+
+
+
+ToDo's
+======
+
+Refactor brand to use parent_id instead of the parent name

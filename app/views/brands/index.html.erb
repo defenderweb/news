@@ -2,27 +2,10 @@
 	<h2>Presskits</h2>
 	
 	<table>
-	
-		<% @main_division.each do |main_div| %>
-		  <tr>
-		    <td><%= render main_div %></td>		    
-		  </tr>
-		  <% @divisions.each do |division| %>
-			  <tr>
-			    <td class="division"><%= render division %></td>
-			  </tr>
-			  <% get_brands_of(division).each do |brand| %>
-				  <tr>
-				    <td class="brand"><%= render brand %></td>
-				  </tr>
-				<% end %>
-			<% end %>
-		<% end %>
+	  <%= render :partial => 'brand_tree', :collection => @main_divisions, :locals => {:level => 0} %>
 	</table>
-	
+
 	<br />
-	
-	
 	<%= link_to 'New Brand Presskit', new_brand_path, :class => "admin new" %>
 	
 </div>

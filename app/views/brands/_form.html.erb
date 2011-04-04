@@ -21,6 +21,13 @@
     <%= brand_form.label :parent %>
     <%= select(:brand, :parent, Brand.all.collect {|p| [ p.name, p.name ] }, {:include_blank => 'None'}) %>
   </div>
+
+  <%- if @brand.divison? -%>
+    <div class="field">
+      <%= brand_form.label :sort_order %>
+      <%= brand_form.text_field :sort_order %>
+    </div>
+  <% end -%>
   
   <div class="field">
     <%= brand_form.label :icon %>
