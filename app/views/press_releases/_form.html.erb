@@ -43,6 +43,6 @@
   <%= render :partial => 'tags/form',
              :locals => {:form => press_release_form} %>
   <div class="actions">
-    <%= press_release_form.submit %>
+    <%= press_release_form.submit :value => 'Save Press Release' %>
   </div>
 <% end %>

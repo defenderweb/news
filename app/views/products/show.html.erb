@@ -6,11 +6,13 @@
 	
 	<h1><span>Presskits: </span><%= @brand.name %>'s <%= @product.model %></h1>
 	
-	<%= link_to 'Edit', edit_brand_product_path(@brand, @product), :class => "admin" %>
-	<%= link_to 'Delete', [@brand, @product],
-  	:confirm => 'Are you sure?',
-  	:method => :delete, 
-  	:class => "admin" %>
+	<% if signed_in? %>
+		<%= link_to 'Edit', edit_brand_product_path(@brand, @product), :class => "admin" %>
+		<%= link_to 'Delete', [@brand, @product],
+		  	:confirm => 'Are you sure?',
+		  	:method => :delete, 
+		  	:class => "admin" %>
+	<% end %>
 	
 	<br />
 	<div class="span-8">

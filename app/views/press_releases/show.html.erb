@@ -11,10 +11,12 @@
   <%= @press_release.content %>
 </p>
 
+<% if signed_in? %>
 <p>
 <%= link_to 'Edit', edit_press_release_path(@press_release), :class => "admin" %>
 <%= link_to 'Delete', @press_release, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
 </p>
+<% end %>
 
 <div class="clear"></div>
 

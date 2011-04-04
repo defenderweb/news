@@ -6,8 +6,10 @@
 	
 	<h1><span>Presskits: </span><%= @brand.name %></h1>
 	
-	<%= link_to 'Edit', edit_brand_path(@brand), :class => "admin" %>
-	<%= link_to 'Delete', @brand, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+	<% if signed_in? %>
+		<%= link_to 'Edit', edit_brand_path(@brand), :class => "admin" %>
+		<%= link_to 'Delete', @brand, :confirm => 'Are you sure?', :method => :delete, :class => "admin" %>
+	<% end %>
 	
 	<br />
 	<div class="span-8">
@@ -49,17 +51,19 @@
 	
 	<div class="clear"></div>
 	
-	<div class="span-8">
-		<h2>Add a Category</h2>
-		<%= render "categories/form" %>
-		<%= link_to 'Manage Categories', brand_categories_path(@brand), :class => "admin" %>
-	</div>
-	
-	<div class="span-8 push-1 last">
-		<h2>Add a Product</h2>
-		<%= render "products/form" %>
-		<%= link_to 'Manage Products', brand_products_path(@brand), :class => "admin" %>
-	</div>
+	<% if signed_in? %>
+		<div class="span-8">
+			<h2>Add a Category</h2>
+			<%= render "categories/form" %>
+			<%= link_to 'Manage Categories', brand_categories_path(@brand), :class => "admin" %>
+		</div>
+		
+		<div class="span-8 push-1 last">
+			<h2>Add a Product</h2>
+			<%= render "products/form" %>
+			<%= link_to 'Manage Products', brand_products_path(@brand), :class => "admin" %>
+		</div>
+	<% end %>
 </div> <!-- presskit -->
 	
 
