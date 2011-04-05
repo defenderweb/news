@@ -7,7 +7,7 @@ class PressReleasesController < ApplicationController
   # GET /press_releases.xml
   def index
     page_title << 'All Press Releases'
-    @press_releases = PressRelease.all :order => "date DESC"
+    @press_releases = PressRelease.paginate( :per_page => 10, :page => params[:page], :order => 'date DESC' )
     #@press_releases = PressRelease.paginate(:page => params[:page])
     
     @brands = Brand.all

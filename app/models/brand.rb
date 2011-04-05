@@ -1,15 +1,17 @@
 class Brand < ActiveRecord::Base
   validates :name,  :presence => true, :uniqueness => true
+  
+  validates :url, :icon, :presence => true
 
-  has_many :press_releases
-  has_many :products
-  has_many :categories
+  has_many :press_releases, :order => 'date DESC'
+  has_many :products, :dependent => :destroy, :order => 'model'
+  has_many :categories, :dependent => :destroy, :order => 'sort_order, name'
 
   scope :main_divisions, where(:parent => "")
 
 
   def categories_with_products
-    self.categories.order('sort_order, name').select{|c| c.products.exists? }
+    self.categories.select{|c| c.products.exists? }
   end
 
   # ToDo: Refactor brand to use parent_id instead of the parent name

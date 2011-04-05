@@ -11,6 +11,7 @@ class BrandsController < ApplicationController
   # GET /brands/1
   def show
     @brand = Brand.find(params[:id]) 
+    @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
     @product = @brand.products.new
     @category = @brand.categories.new
     page_title << @brand.name    

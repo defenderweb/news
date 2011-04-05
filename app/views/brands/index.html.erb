@@ -5,7 +5,10 @@
 	  <%= render :partial => 'brand_tree', :collection => @main_divisions, :locals => {:level => 0} %>
 	</table>
 
-	<br />
-	<%= link_to 'New Brand Presskit', new_brand_path, :class => "admin new" %>
+	
+	<% if signed_in? %>
+		<br />
+		<%= link_to 'New Brand Presskit', new_brand_path, :class => "admin new" %>
+	<% end %>
 	
 </div>

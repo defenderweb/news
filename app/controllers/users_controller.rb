@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   before_filter :authenticate
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :admin_user,   :only => [:destroy, :new, :create]
   
   before_filter :set_page_title
   
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @press_releases = @user.press_releases.paginate( :all, :per_page => 10, :page => params[:page] )
+
     page_title << @user.name
   end
 
@@ -53,9 +55,13 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-
-    redirect_to(users_url)
+    
+    if @user.admin? 
+      redirect_to(users_url, :notice => "#{@user.name} cannot be deleted!")
+    else
+      @user.destroy
+      redirect_to(users_url)
+    end
   end
   
   private
@@ -70,7 +76,7 @@ class UsersController < ApplicationController
     end
     
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path, :notice => 'Only admin users can perform that action') unless current_user.admin?
     end
 
 end

@@ -1,7 +1,6 @@
 <h2>All Press Releases</h2>
 
 
-
 <table>
 	<% @press_releases.each do |press_release| %>
 	  <tr>
@@ -11,6 +10,8 @@
 	  </tr>
 	<% end %>
 </table>	
+
+<%= will_paginate @press_releases, :align => "center" %>
 
 
 

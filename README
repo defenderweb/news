@@ -85,6 +85,8 @@ News
 Specific Q's for Nick
 =====================
 
+When a User is logged in, how can i have the user_id set to that user when creating a new Press Release?
+	i.e. From their profile, they would click "New Press Release" and "Contact" would be set to them.
 
 
 

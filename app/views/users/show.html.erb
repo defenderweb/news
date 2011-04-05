@@ -1,10 +1,32 @@
 <h2>User Profile</h2>
-<p id="notice"><%= notice %></p>
 
 <p>
-<strong><%= @user.name %></strong><br />
-<em><%= @user.title %></em><br />
-<%= mail_to @user.email, @user.email %>
+	<strong><%= @user.name %></strong><br />
+	<em><%= @user.title %></em><br />
+	<%= mail_to @user.email, @user.email %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user), :class => "admin" %> 
+
+<h2><%= @user.name %>'s Press Releases</h2>
+<table>
+	<% unless @user.press_releases.empty? %>
+		<% @press_releases.each do |press_release| %>
+		  	<tr>
+			  	<td><%= image_tag press_release.brand.icon, {:height => 75} %></td>
+			    <td><%= render(press_release) %></td>
+			    <td><%= link_to 'Edit', edit_press_release_path(press_release), :class => "admin" %></td>
+			    <td><%= link_to 'Delete', press_release, :confirm => "Are You Sure?", :method => :delete, :class => "admin" %></td>
+		  	</tr>
+		<% end %>
+		
+    <% else %>
+		<tr><em>No Press Releases</em></tr>
+	<% end %>
+</table>
+<%= will_paginate @press_releases %>
+	
+<br />
+
+<%= link_to 'New Press Release', new_press_release_path, :class => "admin new" %>
+

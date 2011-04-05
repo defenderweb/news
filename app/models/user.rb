@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   attr_accessible :name, :email, :title, :password, :password_confirmation, :encrypted_password
   
-  has_many :press_releases
+  has_many :press_releases, :order => 'date DESC'
   
   scope :marketing_user, where(:email => "marketing@cwdlimited.com")
     
