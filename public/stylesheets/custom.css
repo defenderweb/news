@@ -83,6 +83,14 @@ a.admin.new:hover {
 	background: #ff0000;
 }
 
+p {
+	margin-bottom: 1em;
+}
+
+table p {
+	margin: 0;
+}
+
 /* CWD AND HEADER */
 
 #container {

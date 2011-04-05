@@ -1,4 +1,8 @@
 <p>
 	<em><%= press_release.date.strftime("%B %d %Y")  %></em><br />
 	<%= link_to press_release.title.truncate(150), press_release %><br />
+	
+	<% if signed_in? %>
+		<em>Last updated <strong><%= time_ago_in_words(press_release.updated_at) %> ago.</strong></em>
+	<% end %>
 </p>

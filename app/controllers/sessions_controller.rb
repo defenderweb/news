@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-  
+ 
   before_filter :set_page_title
   
   def new
-  
+    
   end
   
   def create
@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or root_path
       flash[:success] = "Welcome #{user.name}!"
-            
     end
   end
   

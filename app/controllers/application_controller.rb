@@ -4,13 +4,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authenticate
-    deny_access unless signed_in?
-    
+  #def authenticate
+  
     # authenticate_or_request_with_http_basic do |user_name, password|
-    #   (user_name == 'admin' && password == 'foobar') || (user_name == 'jeffm@cwdlimited.com' && password == 'foobar')
+    #   (user_name == 'admin' && password == 'x')
     # end if Rails.env.production?
-  end
+  #end
   
   def page_title
     @page_title ||= []

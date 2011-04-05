@@ -3,7 +3,8 @@
 <p>
 	<strong><%= @user.name %></strong><br />
 	<em><%= @user.title %></em><br />
-	<%= mail_to @user.email, @user.email %>
+	<%= mail_to @user.email, @user.email %><br /><br />
+	<%= @user.press_releases.count %> Press Releases
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user), :class => "admin" %> 
