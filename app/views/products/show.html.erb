@@ -20,7 +20,7 @@
 		<h3>Recent Press Releases</h3>
 		<ul>
 			
-			<% @brand.press_releases.latest_press_releases.each do |press_release| %>
+			<% @press_releases.each do |press_release| %>
 				<li>	
 					<%= render(press_release) %>
 				</li>
@@ -28,6 +28,7 @@
 			<% if @brand.press_releases.latest_press_releases.empty? %>
 				<li><em>No Press Releases</em></li>
 			<% end %>
+			<%= will_paginate @press_releases, :align => "center" %>
 		</ul>
 		
 		<h3>More Information</h3>		

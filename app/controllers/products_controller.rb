@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
   def show
     @brand = Brand.find(params[:brand_id])
     @product = Product.find(params[:id]) 
+    @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
     page_title << @brand.name << @product.model
     
   end
