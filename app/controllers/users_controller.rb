@@ -57,7 +57,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.admin? 
-      redirect_to(users_url, :notice => "#{@user.name} cannot be deleted!")
+      redirect_to(users_url, :notice => "#{@user.name} is an Administrator cannot be deleted!")
+    elsif @user.press_releases.exists?
+      redirect_to(users_url, :notice => "#{@user.name} is the contact for active Press Releases and cannot be deleted!")
     else
       @user.destroy
       redirect_to(users_url)
@@ -78,5 +80,7 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path, :notice => 'Only admin users can perform that action') unless current_user.admin?
     end
+    
+    
 
 end
