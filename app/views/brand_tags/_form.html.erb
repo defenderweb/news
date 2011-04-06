@@ -1,0 +1,9 @@
+<%= form.fields_for :brand_tags do |brand_tag_form| %>
+  <% Brand.all.collect.each do |brand| %>
+	  <div class="field">
+	    <%= brand_tag_form.check_box('press_release[brand_tags][]', [], brand.id) %>
+		<%= brand_tag_form.label('press_release[brand_tags][]', brand.name) %>
+	  </div>
+  <% end %>
+<% end %>
+

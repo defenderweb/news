@@ -6,6 +6,9 @@ class PressRelease < ActiveRecord::Base
   has_many :comments, :dependent => :destroy #this dependent/destroy bit means if the press_release is deleted all comments go with it
   has_many :tags
   
+  has_many :brand_tags, :dependent => :destroy
+  has_many :brands, :through => :brand_tags
+  
   belongs_to :brand
   belongs_to :user
   

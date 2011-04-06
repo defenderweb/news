@@ -28,13 +28,21 @@
   </div>
   <h2>Tags</h2>
   
+  <h3>Main Brand Tag</h3>
   <div class="field">
     <%= press_release_form.label :brand_id %>
     <%= select(:press_release, :brand_id, Brand.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   
-  <%= render :partial => 'tags/form',
-             :locals => {:form => press_release_form} %>
+  <h3>Other Brand Tags</h3>
+  
+	  <!-- "render :partial => 'brand_tags/form', :locals => {:form => press_release_form}" -->
+
+  
+  
+  <h3>Product Tags</h3>
+  
+  <p><em>Coming soon</em></p>
   <div class="actions">
     <%= press_release_form.submit :value => 'Save Press Release' %>
   </div>

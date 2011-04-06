@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404195814) do
+ActiveRecord::Schema.define(:version => 20110406125653) do
+
+  create_table "brand_tags", :force => true do |t|
+    t.integer  "press_release_id"
+    t.integer  "brand_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "brand_tags", ["brand_id"], :name => "index_brand_tags_on_brand_id"
+  add_index "brand_tags", ["press_release_id", "brand_id"], :name => "index_brand_tags_on_press_release_id_and_brand_id", :unique => true
+  add_index "brand_tags", ["press_release_id"], :name => "index_brand_tags_on_press_release_id"
 
   create_table "brands", :force => true do |t|
     t.string   "name"
