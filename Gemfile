@@ -9,6 +9,7 @@ gem 'rails', '3.0.5'
 gem 'mysql2'
 
 gem 'will_paginate', '3.0.pre2'
+gem 'carrierwave'
 
 group :development do
   gem 'rspec-rails', '2.5.0'

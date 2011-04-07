@@ -6,6 +6,7 @@ class Brand < ActiveRecord::Base
   has_many :press_releases, :order => 'date DESC'
   has_many :products, :dependent => :destroy, :order => 'model'
   has_many :categories, :dependent => :destroy, :order => 'sort_order, name'
+  has_many :images, :dependent => :destroy
   
   has_many :brand_tags, :dependent => :destroy
 

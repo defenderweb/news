@@ -1,6 +1,4 @@
 <div id="presskit">
-	<p id="notice"><%= notice %></p>
-	
 	
 	<img src="<%= @brand.icon %>" class="fl" />
 	
@@ -38,7 +36,17 @@
 	<div class="span-8 push-1 last">
 		<h2>Images</h2>
 		<h3>Brand Images</h3>
-		<em>Images will be going here</em>
+		<%= render @brand.images %>
+		
+		<%- if @brand.images.empty? -%>
+			<em>No Images Available</em>
+		<%- end -%>
+		
+		<% if signed_in? %>
+			<h2><strong>Add an Image</strong></h2>
+			<%= render "images/form" %>
+			<%= link_to 'Manage Images', brand_images_path(@brand), :class => "admin" %>
+		<% end %>
 	</div>
 	
 	

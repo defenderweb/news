@@ -15,7 +15,7 @@ News::Application.routes.draw do
   end
   
   resources :brands do
-    resources :categories, :products
+    resources :categories, :products, :images
   end
   
   #ask Nick how to actually rename routes like /brands/1/products/3 to /presskits/defender/SN502-4CH-002/

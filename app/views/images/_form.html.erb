@@ -1,0 +1,13 @@
+<%= form_for([@brand, @image]) do |image_form| %>
+  
+  <%= render 'shared/error_messages', :object => image_form.object %>
+  
+  <div class="field">
+    <%= image_form.label :name %>
+    <%= image_form.text_field :name %>
+  </div>  
+  
+  <div class="actions">
+    <%= image_form.submit %>
+  </div>
+<% end %>

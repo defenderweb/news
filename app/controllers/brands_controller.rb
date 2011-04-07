@@ -14,6 +14,8 @@ class BrandsController < ApplicationController
     @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
     @product = @brand.products.new
     @category = @brand.categories.new
+    @image = @brand.images.new
+    
     page_title << @brand.name    
   end
 
@@ -57,9 +59,14 @@ class BrandsController < ApplicationController
   # DELETE /brands/1
   def destroy
     @brand = Brand.find(params[:id])
-    @brand.destroy
-
-    redirect_to(brands_url)
+    
+    if @brand.press_releases.exists?
+      redirect_to(brand_url(@brand), :notice => "#{@brand.name} has active Press Releases and cannot be deleted!")
+    else
+      @brand.destroy
+      redirect_to(brands_url)
+    end
+    
   end
   
   

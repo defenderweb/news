@@ -17,5 +17,6 @@
 
 <br />
 
-
-<%= link_to 'New Press Release', new_press_release_path, :class => "admin new" %>
+<% if signed_in? %>
+	<%= link_to 'New Press Release', new_press_release_path, :class => "admin new" %>
+<% end %>

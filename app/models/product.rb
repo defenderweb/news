@@ -5,5 +5,7 @@ class Product < ActiveRecord::Base
   belongs_to :brand
   belongs_to :category
   
+  has_many :images, :dependent => :destroy
+  
   scope :without_categories, where(:category_id => nil)
 end

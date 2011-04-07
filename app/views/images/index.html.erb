@@ -1,0 +1,28 @@
+<h2>All <%= @brand.name %> Images</h2>
+
+
+<table>
+	<% @images.each do |image| %>
+	  <tr>
+	    <td><%= render(image) %></td>
+	    
+	    <% if signed_in? %>
+	    <td>
+			<%= link_to 'Edit', edit_brand_image_path(@brand, image), :class => 'admin' %>
+			<%= link_to 'Delete', [@brand, image],
+			  	:confirm => 'Are you sure?',
+			  	:method => :delete, 
+			  	:class => 'admin' %>
+		</td>
+		<% end %>
+	  </tr>
+	<% end %>
+</table>	
+
+
+
+<br />
+
+<% if signed_in? %>
+	<%= link_to "New #{@brand.name} Image", new_brand_image_path(@brand, @image), :class => "admin new" %>
+<% end %>

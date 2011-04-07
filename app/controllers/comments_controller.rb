@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   
-  before_filter :authenticate, :only => :destroy
+  before_filter :authenticate
   
   def create
     @press_release = PressRelease.find(params[:press_release_id])
