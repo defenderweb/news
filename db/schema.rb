@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407145657) do
+ActiveRecord::Schema.define(:version => 20110407181927) do
 
   create_table "brand_tags", :force => true do |t|
     t.integer  "press_release_id"
@@ -57,11 +57,11 @@ ActiveRecord::Schema.define(:version => 20110407145657) do
   create_table "images", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "product_id"
     t.integer  "brand_id"
+    t.string   "asset"
   end
 
   add_index "images", ["brand_id"], :name => "index_images_on_brand_id"

@@ -18,8 +18,9 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @image = Image.new
     @brand = Brand.find(params[:brand_id])
+    @image = @brand.images.new
+    
     page_title << @brand.name << 'Images' << 'New'
   end
 
@@ -34,7 +35,13 @@ class ImagesController < ApplicationController
   def create
     @brand = Brand.find(params[:brand_id])
     @image = @brand.images.create(params[:image])
-    redirect_to brand_path(@brand)
+    
+    if @image.save
+     redirect_to(brand_path(@brand), :notice => 'Image was successfully created.') 
+    else
+     render :action => "new"
+    end    
+    
   end
   
   def update
