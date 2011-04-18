@@ -1,8 +1,8 @@
 <p class="clear">
 	<% if image.thumb_url.nil? %>
-		<a href="<%= image.asset_url.to_s %>" ><%= image_tag image.asset_url.to_s, :height => '80', :class => 'fl' %></a>
+		<a href="<%= image.asset_url.to_s %>" class="image_thumb"><%= image_tag image.asset_url.to_s, :height => '80' %></a>
   	<% else %>
-  		<a href="<%= image.asset_url.to_s %>" ><%= image_tag image.thumb_url.to_s, :height => '80', :class => 'fl' %></a>
+  		<a href="<%= image.asset_url.to_s %>" class="image_thumb"><%= image_tag image.thumb_url.to_s, :height => '80' %></a>
   	<% end %>
   	<br />
   	<b><%= link_to image.name, image.asset_url.to_s %></b><br />

@@ -15,7 +15,9 @@ class ProductsController < ApplicationController
     @brand = Brand.find(params[:brand_id])
     @product = Product.find(params[:id]) 
     @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
-    @image = @product.images.new
+    
+    @presskit = @product # @presskit will be used for both brand and product images
+    @image = @presskit.images.new
     
     page_title << @brand.name << @product.model
     

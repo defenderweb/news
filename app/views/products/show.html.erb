@@ -39,11 +39,20 @@
 	<div class="span-8 push-1 last">
 		<h2>Images</h2>
 		<h3>Product Images</h3>
-		<p><em>Images will be going here</em></p>
+		<%= render @product.images %>
+		
+		<%- if @product.images.empty? -%>
+			<p><em>No Images Available</em></p>
+		<%- end -%>
+		
+		
 		
 		<h3>Brand Images</h3>
-		<em>Brand images will be going here</em><br />
-		<em>Pulled from <%= @brand.name %></em>
+		<%= render @brand.images %>
+		
+		<%- if @brand.images.empty? -%>
+			<p><em>No Images Available</em></p>
+		<%- end -%>
 	</div>
 	
 

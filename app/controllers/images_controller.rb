@@ -5,12 +5,15 @@ class ImagesController < ApplicationController
   
   def index
     @brand = Brand.find(params[:brand_id])
+   
     @images = @brand.images.all
     page_title << @brand.name << 'Images'
+    
   end  
   
   def show
     @brand = Brand.find(params[:brand_id])
+    
     @image = Image.find(params[:id]) 
     
     page_title << @brand.name << @image.name
@@ -18,10 +21,11 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @brand = Brand.find(params[:brand_id])
-    @image = @brand.images.new
+    @presskit = Brand.find(params[:brand_id])
     
-    page_title << @brand.name << 'Images' << 'New'
+    @image = @presskit.images.new
+    
+    page_title << @presskit.name << 'Images' << 'New'
   end
 
   # GET /products/1/edit

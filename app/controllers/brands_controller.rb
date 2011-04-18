@@ -14,7 +14,8 @@ class BrandsController < ApplicationController
     @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
     @product = @brand.products.new
     @category = @brand.categories.new
-    @image = @brand.images.new
+    @presskit = @brand # @presskit will be used for both brand and product images
+    @image = @presskit.images.new
     
     page_title << @brand.name    
   end

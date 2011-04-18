@@ -19,9 +19,14 @@ body {
 
 a:focus, a:hover {color:#ff0000;}
 a {color:#cc0000;text-decoration:none;}
+
 strong a {
 	padding: 3px;
 	text-transform: uppercase;
+}
+
+b a {
+	color: #000;
 }
 
 
@@ -264,6 +269,21 @@ ul#menu li a:hover {color: #e31838;}
 	color:#ff0000;
 	cursor: pointer;
 }
+
+/* IMAGES */
+a.image_thumb {
+	float: left;
+
+	margin: 5px 10px 5px 0px;
+	border: 1px solid #ccc;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	
+}
+
+
 
 
 /* FORMS */
