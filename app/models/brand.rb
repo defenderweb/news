@@ -11,8 +11,12 @@ class Brand < ActiveRecord::Base
   has_many :brand_tags, :dependent => :destroy
 
   scope :main_divisions, where(:parent => "")
-
-
+  
+  
+  def first_image
+    self.images.limit(1)
+  end
+  
   def categories_with_products
     self.categories.select{|c| c.products.exists? }
   end

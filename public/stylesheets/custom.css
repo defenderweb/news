@@ -28,6 +28,9 @@ strong a {
 b a {
 	color: #000;
 }
+b a:hover {
+	color: #cc0000;
+}
 
 
 h1, h2, h3, h4, h5, h6, .button, #contact_information strong {font-family: "Myriad Pro", Myriad, Arial, Helvetica, sans-serif; font-weight: bold}
@@ -87,6 +90,9 @@ a.admin.new {
 a.admin.new:hover {
 	background: #ff0000;
 }
+
+
+
 
 p {
 	margin-bottom: 1em;
@@ -249,6 +255,8 @@ ul#menu li a:hover {color: #e31838;}
 #presskit h3 {
 	font-size: 18px;
 	line-height: 24px;
+	margin-top: 15px;
+	margin-bottom: 5px;
 }
 #presskit ul {
 	list-style: none;
@@ -273,15 +281,18 @@ ul#menu li a:hover {color: #e31838;}
 /* IMAGES */
 a.image_thumb {
 	float: left;
-
+	text-align: center;
 	margin: 5px 10px 5px 0px;
 	border: 1px solid #ccc;
-	position: relative;
 	width: 80px;
 	height: 80px;
 	overflow: hidden;
 	
 }
+a.image_thumb:hover {
+	border: 1px solid #cc0000;
+}
+
 
 
 

@@ -1,4 +1,4 @@
-<h2>New <%= @presskit.name %> Image</h2>
+<h2>New <%= product? ? @presskit.model : @presskit.name %> Image</h2>
 
 <%= render 'form' %>
 

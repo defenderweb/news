@@ -1,4 +1,4 @@
-<h2>All <%= @brand.name %> Images</h2>
+<h2>All <%= product? ? @presskit.model : @presskit.name %> Images</h2>
 
 
 <table>
@@ -8,8 +8,13 @@
 	    
 	    <% if signed_in? %>
 	    <td>
-			<%= link_to 'Edit', edit_brand_image_path(@brand, image), :class => 'admin' %>
-			<%= link_to 'Delete', [@brand, image],
+	    	<% if product? %>
+				<%= link_to 'Edit', edit_product_image_path(@presskit, image), :class => 'admin' %>
+			<% else %>
+				<%= link_to 'Edit', edit_brand_image_path(@presskit, image), :class => 'admin' %>
+			<% end %>
+				
+			<%= link_to 'Delete', [@presskit, image],
 			  	:confirm => 'Are you sure?',
 			  	:method => :delete, 
 			  	:class => 'admin' %>
@@ -24,5 +29,10 @@
 <br />
 
 <% if signed_in? %>
-	<%= link_to "New #{@brand.name} Image", new_brand_image_path(@brand, @image), :class => "admin new" %>
+	<% if product? %>
+		<%= link_to "New #{@presskit.model} Image", new_product_image_path(@presskit, @image), :class => "admin new" %>
+	<% else %>
+		<%= link_to "New #{@presskit.name} Image", new_brand_image_path(@presskit, @image), :class => "admin new" %>
+	<% end %>
+	
 <% end %>

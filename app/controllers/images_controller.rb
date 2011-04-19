@@ -4,44 +4,52 @@ class ImagesController < ApplicationController
   before_filter :set_page_title, :except => [:index]
   
   def index
-    @brand = Brand.find(params[:brand_id])
+    @presskit = find_brand_or_product
    
-    @images = @brand.images.all
-    page_title << @brand.name << 'Images'
+    @images = @presskit.images.all
+    page_title << brand_or_product_name << 'Images'
     
   end  
   
   def show
-    @brand = Brand.find(params[:brand_id])
+    @presskit = find_brand_or_product
     
     @image = Image.find(params[:id]) 
     
-    page_title << @brand.name << @image.name
+    page_title << brand_or_product_name << @image.name
     
   end
 
   def new
-    @presskit = Brand.find(params[:brand_id])
+    @presskit = find_brand_or_product
     
     @image = @presskit.images.new
     
-    page_title << @presskit.name << 'Images' << 'New'
+    page_title << brand_or_product_name << 'Images' << 'New'
   end
 
   # GET /products/1/edit
   def edit
-    @brand = Brand.find(params[:brand_id])
-    @image = @brand.images.find(params[:id])
-    page_title << @brand.name << @image.name << 'Edit'
+    @presskit = find_brand_or_product
+    @image = @presskit.images.find(params[:id])
+    page_title << brand_or_product_name << @image.name << 'Edit'
     
   end
   
   def create
-    @brand = Brand.find(params[:brand_id])
-    @image = @brand.images.create(params[:image])
+        
+    @presskit = find_brand_or_product
+    
+    #add model number to title before save
+    params[:image][:name] = "#{@presskit.model} #{params[:image][:name]}"
+    @image = @presskit.images.create(params[:image])
     
     if @image.save
-     redirect_to(brand_path(@brand), :notice => 'Image was successfully created.') 
+     if product?
+          redirect_to(product_images_path(@presskit, @presskit.images.all), :notice => 'Image was successfully created.')
+        else
+          redirect_to(brand_images_path(@presskit, @presskit.images.all), :notice => 'Image was successfully created.')
+        end 
     else
      render :action => "new"
     end    
@@ -49,22 +57,30 @@ class ImagesController < ApplicationController
   end
   
   def update
-    @brand = Brand.find(params[:brand_id])
-    @image = @brand.images.find(params[:id])
+    @presskit = find_brand_or_product
+    @image = @presskit.images.find(params[:id])
 
 
       if @image.update_attributes(params[:image])
-        redirect_to(brand_images_path(@brand, @brand.images.all), :notice => 'Image was successfully updated.')
+        if product?
+          redirect_to(product_images_path(@presskit, @presskit.images.all), :notice => 'Image was successfully updated.')
+        else
+          redirect_to(brand_images_path(@presskit, @presskit.images.all), :notice => 'Image was successfully updated.')
+        end    
       else
         render :action => "edit"
       end
   end
   
   def destroy
-    @brand = Brand.find(params[:brand_id])
-    @image = @brand.images.find(params[:id])
+    @presskit = find_brand_or_product
+    @image = @presskit.images.find(params[:id])
     @image.destroy
-    redirect_to brand_images_path(@brand)    
+    if product?
+      redirect_to product_images_path(@presskit)
+    else
+      redirect_to brand_images_path(@presskit)
+    end    
   end
   
   private
@@ -72,5 +88,23 @@ class ImagesController < ApplicationController
     def set_page_title
       page_title << "Presskits"
     end
+    
+
+    def find_brand_or_product
+      Product.where(:id => params[:product_id]).first || Brand.where(:id => params[:brand_id]).first
+    end
+    
+    def brand_or_product_name
+      if product? 
+        @presskit.model
+      else
+        @presskit.name
+      end
+    end
+    
+    def product?
+      Product.where(:id => params[:product_id]).first
+    end
+    
   
 end

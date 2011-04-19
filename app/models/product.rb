@@ -8,4 +8,7 @@ class Product < ActiveRecord::Base
   has_many :images, :dependent => :destroy
   
   scope :without_categories, where(:category_id => nil)
+  
+
+  
 end

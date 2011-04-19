@@ -39,6 +39,8 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
     clear_return_to
   end
+  
+  
     
   private
 
@@ -57,4 +59,6 @@ module SessionsHelper
     def clear_return_to
       session[:return_to] = nil
     end
+    
+    
 end

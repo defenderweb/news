@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_filter :authenticate, :except => [:index, :show] #before_filter runs before everything else
+  before_filter :authenticate, :except => [:show] #before_filter runs before everything else
   before_filter :set_page_title, :except => [:index]
   
   def index
@@ -12,8 +12,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.xml
   def show
-    @brand = Brand.find(params[:brand_id])
+    
     @product = Product.find(params[:id]) 
+    @brand = Brand.find(@product.brand_id)
     @press_releases = @brand.press_releases.paginate( :all, :per_page => 3, :page => params[:page] )
     
     @presskit = @product # @presskit will be used for both brand and product images

@@ -42,9 +42,9 @@
 			<em>No Images Available</em>
 		<%- end -%>
 		
-		<% if signed_in? %>
-			<h2><strong>Add an Image</strong></h2>
-			<%= render "images/form" %>
+		<br class="clear" />
+		
+		<% if signed_in? %>			
 			<%= link_to 'Manage Images', brand_images_path(@brand), :class => "admin" %>
 		<% end %>
 	</div>

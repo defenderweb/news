@@ -1,4 +1,10 @@
-<p>
-  	<%= link_to "#{product.title}", [product.brand, product] %><br />
+<p class="clear">
+	<% if product.images.exists? %>
+		<%= link_to (image_tag product.images.first.asset_url.to_s, :height => '80'), [product.brand, product], :class => 'image_thumb' %>
+	<% else %>
+		<%= link_to (image_tag @brand.icon, :height => '80'), [product.brand, product], :class => 'image_thumb' %>
+	<% end %>
+	<br />
+  	<b><%= link_to "#{product.title}", [product.brand, product] %></b><br />
   	<em><%= product.model %></em>
 </p>

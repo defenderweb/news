@@ -1,6 +1,5 @@
 <div id="presskit">
-	<p id="notice"><%= notice %></p>
-	
+
 	
 	<img src="<%= @brand.icon %>" class="fl" />
 	
@@ -31,6 +30,11 @@
 			<%= will_paginate @press_releases, :align => "center" %>
 		</ul>
 		
+		<h3>Awards</h3>		
+		<p>
+			<em>Awards will be shown here ONLY if they exist</em>
+		</p>
+		
 		<h3>More Information</h3>		
 		<%= product_website_link(@product, :new_window => true) %>
 
@@ -44,6 +48,13 @@
 		<%- if @product.images.empty? -%>
 			<p><em>No Images Available</em></p>
 		<%- end -%>
+		
+		<br class="clear" />
+		
+		<% if signed_in? %>
+				<%= link_to 'Manage Images', product_images_path(@product), :class => "admin" %>
+			<br class="clear" />
+		<% end %>
 		
 		
 		
