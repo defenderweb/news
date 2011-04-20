@@ -22,6 +22,14 @@
 		<% end %>
 	  </tr>
 	<% end %>
+	
+	<% if @images.empty? %>
+		<tr>
+		    <td><em>No Images</em></td>
+		    <td></td>
+		    
+		</tr>
+	<% end %>
 </table>	
 
 
@@ -31,8 +39,12 @@
 <% if signed_in? %>
 	<% if product? %>
 		<%= link_to "New #{@presskit.model} Image", new_product_image_path(@presskit, @image), :class => "admin new" %>
+		
 	<% else %>
 		<%= link_to "New #{@presskit.name} Image", new_brand_image_path(@presskit, @image), :class => "admin new" %>
 	<% end %>
+	
+	<%= link_to "Back", @presskit, :class => "admin" %>
+	
 	
 <% end %>

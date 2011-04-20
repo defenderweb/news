@@ -10,10 +10,11 @@ gem 'mysql2'
 
 gem 'will_paginate', '3.0.pre2'
 
-#gem 'rmagick'
+
 gem 'carrierwave'
 
 group :development do
+  #gem 'rmagick', '2.12.0', :require => 'RMagick'
   gem 'rspec-rails', '2.5.0'
   gem 'annotate-models', '1.0.4'
 end

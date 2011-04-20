@@ -1,3 +1,5 @@
+
+
 class Image < ActiveRecord::Base
   
   attr_accessible :name, :asset, :thumb

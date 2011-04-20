@@ -1,9 +1,10 @@
 # encoding: utf-8
+#require 'C:\Ruby192\lib\ruby\gems\1.9.1\gems\rmagick-2.12.0-x86-mswin32\lib\RMagick'
 
 class AssetUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
+  #include CarrierWave::RMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -30,7 +31,7 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   #version :thumb do
-  #  process :resize_to_limit => [80, 80]
+    #process :resize_to_limit => [80, 80]
   #end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -43,5 +44,10 @@ class AssetUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
+  def cache_dir
+    "#{RAILS_ROOT}/tmp/uploads"
+  end
+  
 
 end
