@@ -58,8 +58,10 @@
 	
 	<% if @brand.products.without_categories.exists? %>
 		<div class="span-8 <%= cycle('clear', 'push-1 last') %>">
-			<h2><%= @brand.categories.exists? ? 'Other' : 'Products' %> <span class="expanded">[+]</span></h2>
-			<%= render @brand.products.without_categories %>
+			<h2><%= @brand.categories.exists? ? 'Other' : 'Products' %> <span class="expander">[+]</span></h2>
+			<div class="product_list">
+				<%= render @brand.products.without_categories %>
+			</div>
 		</div>
 	<% end %>
 	

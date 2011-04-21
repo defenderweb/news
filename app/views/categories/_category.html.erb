@@ -1,4 +1,5 @@
 
-  		<h2><%= category.name %> <span class="expanded">[+]</span></h2>
-		<%= render category.products %>
-	
+  		<h2><%= category.name %> <span class="expander">[+]</span></h2>
+		<div class="product_list">
+			<%= render category.products %>
+		</div>

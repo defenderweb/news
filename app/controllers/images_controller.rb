@@ -40,9 +40,16 @@ class ImagesController < ApplicationController
         
     @presskit = find_brand_or_product
     
-    #add model number to title before save
-    params[:image][:name] = "#{@presskit.model} #{params[:image][:name]}"
+    if product?
+      #add model number to title before save
+      params[:image][:name] = "#{@presskit.model} #{params[:image][:name]}"
+    else
+      #add brand name to title before save
+      params[:image][:name] = "#{@presskit.name} #{params[:image][:name]}"
+    end
+    @filename = update_filename
     @image = @presskit.images.create(params[:image])
+    
     
     if @image.save
      if product?
@@ -58,6 +65,7 @@ class ImagesController < ApplicationController
   
   def update
     @presskit = find_brand_or_product
+    @filename = update_filename
     @image = @presskit.images.find(params[:id])
 
 
@@ -83,6 +91,10 @@ class ImagesController < ApplicationController
     end    
   end
   
+  def update_filename
+      ("#{params[:image][:name]}.jpg").gsub('', '-')
+    end
+    
   private
 
     def set_page_title
@@ -105,6 +117,8 @@ class ImagesController < ApplicationController
     def product?
       Product.where(:id => params[:product_id]).first
     end
+    
+    
     
   
 end

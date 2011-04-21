@@ -1,6 +1,6 @@
 <p class="clear">
 	<% if product.images.exists? %>
-		<%= link_to (image_tag product.images.first.asset_url.to_s, :height => '80'), [product.brand, product], :class => 'image_thumb' %>
+		<%= link_to (image_tag product.images.first.asset_url(:thumbnail).to_s, :height => '80'), [product.brand, product], :class => 'image_thumb' %>
 	<% else %>
 		<%= link_to (image_tag @brand.icon, :height => '80'), [product.brand, product], :class => 'image_thumb' %>
 	<% end %>

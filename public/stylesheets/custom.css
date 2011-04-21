@@ -269,11 +269,11 @@ ul#menu li a:hover {color: #e31838;}
 	padding: 0px;
 }
 
-.expanded, .minimized {
+.expander {
 	color:#cc0000;
 	cursor: default;
 }
-.expanded.hover, .minimized.hover, .expanded:hover, .minimized:hover {
+.expander.hover, .expander:hover {
 	color:#ff0000;
 	cursor: pointer;
 }

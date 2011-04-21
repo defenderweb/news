@@ -17,9 +17,17 @@
   </div>  
   
   <div class="field">
+  	<%= image_form.label :remote_asset_url, 'or Image URL' %>
+    <%= image_form.text_field :remote_asset_url %>
+  </div>
+  
+  
+  <div class="field">
   	<%= image_form.label :thumb, 'Thumb (Optional)' %>
     <%= image_form.file_field :thumb %>
   </div>
+  
+  
   
   <div class="actions">
     <%= image_form.submit %>

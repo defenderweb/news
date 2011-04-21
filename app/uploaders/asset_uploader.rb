@@ -1,11 +1,14 @@
 # encoding: utf-8
 #require 'C:\Ruby192\lib\ruby\gems\1.9.1\gems\rmagick-2.12.0-x86-mswin32\lib\RMagick'
+require 'carrierwave/processing/mini_magick'
 
 class AssetUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or ImageScience support:
   #include CarrierWave::RMagick
   # include CarrierWave::ImageScience
+  include CarrierWave::MiniMagick
+  
+  attr_accessor :height, :width
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -30,9 +33,11 @@ class AssetUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  #version :thumb do
-    #process :resize_to_limit => [80, 80]
-  #end
+  version :thumbnail do
+    process :resize_to_fill => [80, 80, gravity = 'Center']
+    #process :colorspace => 'rgb' #need Magick for this to run
+    process :convert => 'jpg'
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -41,13 +46,38 @@ class AssetUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+      @filename     
+  end
+  
+  def colorspace(cs)
+    manipulate! do |img|
+      case cs
+      when 'rgb'
+        img.colorspace = Magick::RGBColorspace
+      when 'cmyk'
+        img.colorspace = Magick::CMYKColorspace
+      end
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
+  
   
   def cache_dir
     "#{RAILS_ROOT}/tmp/uploads"
   end
+  
+  before :store, :save_dimensions
+  def save_dimensions(foo = nil)
+    manipulate! do |img|
+      self.height = img['height']
+      self.width = img['width']
+      img
+    end
+  end
+  
   
 
 end
